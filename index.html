@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Emergency Radio Coverage for Buildings | Testing &amp; BDA Installation | FirstComms</title>
+<meta name="description" content="We test whether firefighters can use their radios inside your building, and install the system that fixes it when they can't. BDA / ERRC systems built to IFC 510 and NFPA 1225.">
+<link rel="canonical" href="https://first-comms.com/">
+<meta name="theme-color" content="#240D07">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="format-detection" content="telephone=yes">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FirstComms">
+<meta property="og:title" content="Emergency Radio Coverage for Buildings | Testing &amp; BDA Installation">
+<meta property="og:description" content="We test whether firefighters can use their radios inside your building, and install the system that fixes it when they can't.">
+<meta property="og:url" content="https://first-comms.com/">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Crect%20width%3D%27200%27%20height%3D%27200%27%20fill%3D%27%23240D07%27%2F%3E%3Cpath%20d%3D%27M68%2040%20L158%2040%20L158%2054%20L144%2068%20L68%2068%20L68%20144%20L54%20158%20L40%20158%20L40%2068%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M100%2078%20L152%2078%20L152%2090%20L140%20102%20L100%20102%20L100%20140%20L88%20152%20L76%20152%20L76%20102%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M130%20118%20L152%20118%20L152%20140%20L140%20152%20L118%20152%20L118%20130%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
+
+<style>
+/* ==========================================================================
+   FirstComms — Public safety BDA / ERRC landing page
+   One file on purpose: a single request, no webfonts, no external CSS.
+   Mono carries the brand on headings and UI; body copy is system sans,
+   which is what makes long-form text on this page actually readable.
+   ========================================================================== */
+:root{
+  --cream-50:#FBF7F4; --cream-100:#F7F1ED; --cream-200:#EBE1DA;
+  --cream-300:#E0D2C9; --cream-400:#CDB9AC;
+
+  --brown-900:#240D07; --brown-800:#3A1710; --brown-700:#5A2415;
+  --brown-600:#74341E; --brown-400:#8A5540; --brown-200:#C8B3A6;
+
+  --orange:#FA5019; --orange-btn:#D93F12; --orange-lift:#FF6A3D; --orange-wash:#FBE3DA;
+
+  --text:var(--brown-700); --muted:var(--brown-600);
+  --line:var(--cream-300); --bg:var(--cream-200);
+
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --shadow-sm:0 1px 3px rgba(36,13,7,.08);
+  --shadow-md:0 12px 30px rgba(36,13,7,.10);
+  --shadow-lg:0 26px 60px rgba(36,13,7,.18);
+  --container:1180px; --header-h:64px; --cut:12px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--sans);font-size:1.02rem;line-height:1.65;color:var(--muted);background:var(--bg);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+img,svg{display:block;max-width:100%;height:auto}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none;padding:0}
+h1,h2,h3,h4{font-family:var(--mono);font-weight:700;line-height:1.2;text-transform:uppercase;
+  letter-spacing:.04em;color:var(--brown-700);text-wrap:balance}
+h1{font-size:clamp(1.8rem,4vw,2.9rem);letter-spacing:.05em;line-height:1.14}
+h2{font-size:clamp(1.3rem,2.5vw,1.85rem)}
+h3{font-size:.95rem;letter-spacing:.06em}
+p{text-wrap:pretty}
+strong{font-weight:700;color:var(--brown-700)}
+:focus-visible{outline:3px solid var(--brown-900);outline-offset:3px}
+
+.container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:20px}
+.section{padding:clamp(44px,5.5vw,72px) 0}
+.bg-card{background:var(--cream-100)}
+.bg-dark{background:var(--brown-900);color:var(--brown-200)}
+.bg-dark h2,.bg-dark h3{color:var(--cream-100)}
+.eyebrow{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--orange-btn);border-bottom:2px solid var(--orange);padding-bottom:5px}
+.bg-dark .eyebrow{color:var(--orange-lift)}
+.lede{font-size:1.05rem;max-width:60ch}
+.bg-dark .lede{color:var(--brown-200)}
+.section-head{max-width:62ch;margin-bottom:30px}
+.section-head h2{margin-top:14px}
+.section-head p{margin-top:12px}
+.center{text-align:center;margin-inline:auto}
+.skip{position:absolute;left:-9999px;background:var(--brown-900);color:var(--cream-100);padding:12px 18px;z-index:200}
+.skip:focus{left:12px;top:12px}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;
+  font-family:var(--mono);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  cursor:pointer;border:0;text-align:center;background:var(--orange-btn);color:#fff;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
+  transition:background-color .15s ease}
+.btn:hover{background:#B93209}
+.btn:focus-visible{outline:none;background:var(--brown-900)}
+.btn-sm{padding:11px 18px;font-size:.72rem;--cut:9px}
+.btn-block{width:100%}
+
+/* ---------- Header ---------- */
+.header{position:sticky;top:0;z-index:100;background:var(--brown-900);border-bottom:2px solid var(--orange)}
+.header-inner{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand span{font-family:var(--mono);font-size:.95rem;font-weight:700;letter-spacing:.2em;
+  color:var(--cream-100);white-space:nowrap}
+.header-nav{display:none;gap:22px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase}
+.header-nav a{color:var(--brown-200);padding:5px 0;border-bottom:2px solid transparent}
+.header-nav a:hover,.header-nav a.active{color:var(--cream-100);border-color:var(--orange)}
+.header-phone{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.76rem;
+  font-weight:700;letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
+  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
+.header-phone:hover{background:#B93209}
+.header-phone svg{stroke:#fff}
+@media(min-width:620px){.header-phone{font-size:.82rem;padding:12px 18px}}
+@media(min-width:980px){.header-nav{display:flex}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(30px,4.5vw,52px) 0 clamp(34px,5vw,58px)}
+.hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
+.hero-grid{position:relative;display:grid;gap:30px;align-items:start}
+@media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
+.hero h1{margin-top:14px;font-size:clamp(1.7rem,3.5vw,2.6rem)}
+.hero h1 .hl{color:var(--orange-btn)}
+.hero-sub{margin-top:16px;font-size:1.08rem;line-height:1.6;max-width:48ch}
+.hero-points{margin-top:22px;display:grid;gap:9px;border-top:1px solid var(--line);padding-top:18px}
+.hero-points li{display:flex;gap:11px;align-items:center;font-size:.97rem;line-height:1.45}
+.hero-points svg{flex:none;color:var(--orange-btn)}
+.badge-row{display:flex;flex-wrap:wrap;gap:7px;margin-top:22px}
+.badge{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 11px;color:var(--brown-600);border:1px solid var(--cream-400);background:var(--cream-100)}
+
+/* ---------- Form ---------- */
+.form-card{background:var(--cream-50);border:1px solid var(--cream-300);border-top:4px solid var(--orange);
+  padding:24px 22px;box-shadow:var(--shadow-md)}
+.form-card h2{font-size:1.15rem}
+.form-sub{margin-top:9px;font-size:.92rem;line-height:1.55}
+.field{margin-top:14px}
+.field label{display:block;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:6px;color:var(--brown-700)}
+.field .opt{color:var(--brown-400);font-weight:400}
+.field input,.field select,.field textarea{width:100%;padding:12px 13px;font-size:.95rem;font-family:var(--sans);
+  border:1px solid var(--cream-400);background:#fff;color:var(--brown-700);border-radius:0;
+  transition:border-color .15s ease,box-shadow .15s ease}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange-btn);
+  box-shadow:0 0 0 3px rgba(250,80,25,.18)}
+.field textarea{min-height:74px;resize:vertical}
+.field-row{display:grid;gap:14px}
+@media(min-width:520px){.field-row{grid-template-columns:1fr 1fr}}
+.form-foot{margin-top:13px;font-size:.78rem;line-height:1.5;color:var(--brown-400);text-align:center}
+.form-foot a{text-decoration:underline;color:var(--brown-600)}
+.form-notice{margin-top:12px;padding:10px 12px;background:var(--orange-wash);border-left:3px solid var(--orange);
+  font-size:.85rem;color:var(--brown-700)}
+
+/* ---------- Capability bar ---------- */
+.ticker{background:var(--brown-900);padding:15px 0;border-bottom:1px solid rgba(250,80,25,.35)}
+.ticker-list{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 20px;
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;
+  text-align:center;color:var(--brown-200)}
+.ticker-list li{display:flex;align-items:center;gap:20px}
+.ticker-list li:not(:last-child)::after{content:"";width:6px;height:6px;background:var(--orange);flex:none}
+
+/* ---------- Spec strip: the numbers, not a table ---------- */
+.specs{display:grid;gap:1px;background:var(--cream-400);border:1px solid var(--cream-400)}
+@media(min-width:560px){.specs{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.specs{grid-template-columns:repeat(3,1fr)}}
+.spec{background:var(--cream-50);padding:24px 20px;transition:background-color .18s ease}
+.spec:hover{background:#fff}
+.spec b{display:block;font-family:var(--mono);font-size:clamp(1.6rem,3vw,2.1rem);font-weight:700;letter-spacing:.01em;
+  color:var(--orange-btn);line-height:1.1}
+.spec strong{display:block;margin-top:9px;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brown-700)}
+.spec span{display:block;margin-top:6px;font-size:.86rem;line-height:1.5;color:var(--brown-400)}
+.fineprint{margin-top:16px;font-size:.82rem;line-height:1.6;color:var(--brown-400);max-width:80ch}
+
+/* ---------- Cards ---------- */
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:1fr}
+.grid-3{grid-template-columns:1fr}
+@media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr}.grid-3{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid-3{grid-template-columns:repeat(3,1fr)}}
+.card{position:relative;background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;
+  clip-path:polygon(14px 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%,0 14px);
+  transition:transform .18s ease,background-color .18s ease}
+.card::before{content:"";position:absolute;top:0;left:0;height:3px;width:0;background:var(--orange);
+  transition:width .28s ease}
+.card:hover{transform:translateY(-3px);background:#fff}
+.card:hover::before{width:100%}
+.bg-dark .card:hover{background:rgba(255,255,255,.09)}
+.card h3{margin-bottom:8px}
+.card p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
+.ico{width:38px;height:38px;display:grid;place-items:center;background:var(--orange-wash);
+  color:var(--orange-btn);margin-bottom:14px}
+.bg-dark .ico{background:rgba(250,80,25,.16);color:var(--orange-lift)}
+.card-num{display:block;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.18em;
+  color:var(--orange-btn);margin-bottom:9px}
+.bg-dark .card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.16)}
+.bg-dark .card p{color:var(--brown-200)}
+
+/* ---------- Split rows (compliant / to-be-fixed, symptoms) ---------- */
+.split{display:grid;gap:16px}
+@media(min-width:700px){.split{grid-template-columns:1fr 1fr}}
+.split-item{padding:20px;border:1px solid var(--cream-300);background:var(--cream-50)}
+.split-item.pass{border-left:4px solid #0E8F5A}
+.split-item.fix{border-left:4px solid var(--orange)}
+.split-item h3{margin-bottom:8px}
+.split-item p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
+
+.checks{display:grid;gap:11px;margin-top:6px}
+.checks li{display:flex;gap:11px;align-items:flex-start;font-size:.95rem;line-height:1.55}
+.checks svg{flex:none;margin-top:3px;color:var(--orange-btn)}
+
+/* ---------- Steps ---------- */
+.steps{display:grid;gap:14px}
+@media(min-width:760px){.steps{grid-template-columns:repeat(4,1fr)}}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.16);padding:20px 18px}
+.step b{display:block;font-family:var(--mono);font-size:1.7rem;color:var(--orange-lift);margin-bottom:10px}
+.step h3{margin-bottom:8px}
+.step p{font-size:.9rem;line-height:1.55;color:var(--brown-200)}
+
+.stats{display:grid;gap:1px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.16);margin-top:26px}
+@media(min-width:560px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stat{background:var(--brown-900);padding:20px 18px}
+.stat b{display:block;font-family:var(--mono);font-size:clamp(1.3rem,2.4vw,1.7rem);color:var(--cream-100);text-transform:uppercase}
+.stat span{display:block;margin-top:6px;font-size:.83rem;line-height:1.5;color:var(--brown-200)}
+
+/* ---------- Commissioning chips ---------- */
+.chips{display:grid;gap:10px}
+@media(min-width:640px){.chips{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.chips{grid-template-columns:repeat(4,1fr)}}
+.chip{display:flex;gap:11px;align-items:baseline;padding:14px 16px;background:var(--cream-50);
+  border:1px solid var(--cream-300);font-size:.9rem;line-height:1.45}
+.chip b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--orange-btn);flex:none}
+
+/* ---------- Pills ---------- */
+.pill-list{display:flex;flex-wrap:wrap;gap:7px}
+.pill{padding:8px 13px;background:var(--cream-50);border:1px solid var(--cream-400);font-family:var(--mono);
+  font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--brown-600)}
+
+/* ---------- FAQ ---------- */
+.faq{max-width:860px;margin-inline:auto;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 4px;
+  background:none;border:0;text-align:left;font-family:var(--mono);font-size:.85rem;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;line-height:1.45;color:var(--brown-700);cursor:pointer}
+.faq-q:hover{color:var(--orange-btn)}
+.faq-q .chev{flex:none;transition:transform .2s ease;color:var(--orange-btn)}
+.faq-item.open .faq-q .chev{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.faq-item.open .faq-a{max-height:420px}
+.faq-a p{padding:0 4px 18px;font-size:.95rem;line-height:1.65;color:var(--brown-400);max-width:76ch}
+
+/* ---------- Reviews (styles ready; markup is commented out in <main>) ---------- */
+.review{background:var(--cream-50);border:1px solid var(--cream-300);padding:22px 20px;border-top:3px solid var(--orange)}
+.stars{display:flex;gap:4px;margin-bottom:13px;color:var(--orange)}
+.review blockquote{font-size:.93rem;line-height:1.7}
+.review cite{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-style:normal;
+  font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-700)}
+
+/* ---------- Hero photograph (enable with the slot in <main>) ---------- */
+.hero-photo{background:var(--brown-900);margin:0}
+.hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:460px}
+
+
+/* ---------- Signal meter ---------- */
+.meter{margin:26px 0 0;padding:22px 18px;background:var(--cream-50);border:1px solid var(--cream-300);
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.meter svg{width:100%;max-width:900px;margin-inline:auto}
+
+/* ---------- Statement band ---------- */
+.statement{background:var(--brown-900);color:var(--cream-100);padding:clamp(38px,5vw,60px) 0;
+  border-top:3px solid var(--orange)}
+.statement p{font-family:var(--mono);font-weight:700;text-transform:uppercase;letter-spacing:.03em;
+  line-height:1.25;font-size:clamp(1.35rem,3.2vw,2.3rem);max-width:22ch}
+.statement em{font-style:normal;color:var(--orange-lift)}
+.statement span{display:block;margin-top:16px;font-size:.98rem;line-height:1.6;color:var(--brown-200);max-width:52ch}
+
+/* ---------- Project gallery (enable with the slot in <main>) ---------- */
+.shots{display:grid;gap:16px}
+@media(min-width:700px){.shots{grid-template-columns:repeat(3,1fr)}}
+.shots figure{margin:0;background:var(--cream-50);border:1px solid var(--cream-300)}
+.shots img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.shots figcaption{padding:12px 14px;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--brown-400)}
+
+/* ---------- Footer ---------- */
+.footer{background:var(--brown-900);color:var(--brown-200);padding:40px 0 100px;font-size:.9rem;line-height:1.65}
+@media(min-width:860px){.footer{padding-bottom:40px}}
+.footer-grid{display:grid;gap:26px}
+@media(min-width:760px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr}}
+.footer h4{color:var(--cream-100);font-family:var(--mono);font-size:.68rem;letter-spacing:.18em;margin-bottom:12px}
+.footer a:hover{color:var(--orange-lift)}
+.footer ul{display:grid;gap:8px}
+.footer-bottom{margin-top:28px;padding-top:18px;border-top:1px solid rgba(255,255,255,.14);
+  display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;font-size:.78rem;line-height:1.6}
+
+/* ---------- Mobile call bar ---------- */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:110;display:grid;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--brown-900);
+  border-top:2px solid var(--orange)}
+@media(min-width:860px){.callbar{display:none}}
+
+/* ---------- Reveal ---------- */
+.js .reveal{opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease}
+.js .reveal.visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none}}
+</style>
+
+<script>document.documentElement.className += " js";</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZ01Y3KFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7BZ01Y3KFS');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.firstcomms.net/#business",
+      "name": "FirstComms",
+      "description": "Testing and installation of emergency responder radio coverage systems (BDA / ERRC) for buildings, plus yearly testing and repairs.",
+      "url": "https://www.firstcomms.net/",
+      "telephone": "+1-732-314-5162",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1390 Lakewood Rd",
+        "addressLocality": "Toms River",
+        "addressRegion": "NJ",
+        "postalCode": "08755",
+        "addressCountry": "US"
+      },
+      "areaServed": ["New Jersey", "New York", "Pennsylvania", "Delaware", "Connecticut"],
+      "knowsAbout": ["Emergency Responder Radio Communication Systems", "Bi-Directional Amplifiers", "Public Safety DAS", "IFC Section 510", "NFPA 1225"]
+    },
+    {
+      "@type": "Service",
+      "name": "Public Safety BDA / ERRC Systems",
+      "serviceType": "Emergency responder radio coverage testing, design, installation and annual testing",
+      "provider": { "@id": "https://www.firstcomms.net/#business" },
+      "areaServed": { "@type": "State", "name": "New Jersey" }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I know if my building needs this?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You test it. We measure the radio signal throughout the building and give you a straight answer. If it already passes, you get the report and install nothing. If it does not, the same test tells us exactly what the building needs." }
+        },
+        {
+          "@type": "Question",
+          "name": "What exactly is this system?",
+          "acceptedAnswer": { "@type": "Answer", "text": "An antenna on the roof picks up the emergency radio signal from outside, an amplifier boosts it, and antennas around the building spread it to every floor. It is called a BDA, an ERRC system or a public safety DAS — they all mean the same thing." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "It depends on the size of the building, how many floors need covering, and how strong the outside signal is. Anyone giving a firm price before testing is guessing. We price it once the test says what is needed — and if the building passes, there is nothing to buy." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this delay my certificate of occupancy?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In most towns, yes. Radio coverage is usually checked before final sign-off, so a missing or failed test can hold up a CO. That is why it is worth testing early rather than the week of the inspection." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does the whole thing take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Testing and a report usually take a few days. If a system is needed, design comes next, then installation — a few days on a mid-size building, longer on a large or occupied one — and then final testing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I have to test it every year?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, and it is the building owner's responsibility, not the installer's. We do the yearly test, replace batteries when due, and keep the records ready for the fire official." }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+
+<body>
+<a class="skip" href="#lead-form">Skip to the enquiry form</a>
+
+<!-- Icon sprite: defined once, referenced by <use> so the markup stays small -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <g id="i-wave" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M12 20v-7"/><circle cx="12" cy="9" r="2.2"/>
+      <path d="M6.5 12.5a7 7 0 010-8M17.5 4.5a7 7 0 010 8"/><path d="M8 20h8"/>
+    </g>
+    <g id="i-draft" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h5"/>
+    </g>
+    <g id="i-tools" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.5 5.5a3.5 3.5 0 004.9 4.2L21 20H8l1.6-10.3a3.5 3.5 0 004.9-4.2z"/><path d="M4 20h16"/>
+    </g>
+    <g id="i-doc" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9.5 14l2 2 3.5-4"/>
+    </g>
+    <g id="i-cal" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="5" width="18" height="16"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M8.5 15l2 2 4-4"/>
+    </g>
+    <g id="i-wrench" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 6.5a5 5 0 01-6.6 6.6L6 20.5 3.5 18l7.4-7.4A5 5 0 0117.5 4z"/>
+    </g>
+    <g id="i-shield" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>
+    </g>
+    <g id="i-badge" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5"/>
+    </g>
+    <g id="i-hand" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 12l4-1 8 3 4-1.5"/><path d="M6 20h12"/><path d="M12 3v6"/>
+    </g>
+    <g id="i-check" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"/>
+    </g>
+  </defs>
+</svg>
+
+<header class="header" id="header">
+  <div class="container header-inner">
+    <a class="brand" href="#top" aria-label="FirstComms — top of page">
+      <svg width="26" height="26" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+        <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+        <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+      </svg>
+      <span>FIRSTCOMMS</span>
+    </a>
+
+    <nav class="header-nav" aria-label="Section navigation">
+      <a href="#basics">How It Works</a>
+      <a href="#rf-testing">Testing</a>
+      <a href="#services">What We Do</a>
+      <a href="#why">Why Us</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <a class="header-phone phone-link" href="tel:+17323145162">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 1.9.7 2.8a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.3-1.2a2 2 0 012.1-.5c.9.3 1.8.6 2.8.7a2 2 0 011.7 2z"/>
+      </svg>
+      732-314-5162
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <svg class="hero-lines" viewBox="0 0 640 520" fill="none" aria-hidden="true">
+      <g stroke="#D8C4B8" stroke-width="2">
+        <path d="M40 0 L300 240 L40 480"/><path d="M110 0 L370 240 L110 480"/>
+        <path d="M180 0 L440 240 L180 480"/><path d="M250 0 L510 240 L250 480"/>
+        <path d="M320 0 L580 240 L320 480"/>
+      </g>
+    </svg>
+
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow">ERRC &amp; BDA Systems</span>
+        <h1 id="hero-headline">Firefighters need their radios to work inside your building. <span class="hl">We make sure they do.</span></h1>
+
+        <p class="hero-sub">
+          Fire code requires it. Concrete and steel block the signal. We test your building and install
+          the system that fixes it &mdash; a <strong>BDA</strong>, also called an <strong>ERRC system</strong>.
+        </p>
+
+        <ul class="hero-points">
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>Testing</strong> that tells you exactly where you stand</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>Design and installation</strong> by our own crew</span></li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+            <span><strong>Yearly testing</strong> after, so you stay compliant</span></li>
+        </ul>
+
+        <div class="badge-row" aria-label="Standards we build to">
+          <span class="badge">IFC 510</span>
+          <span class="badge">NFPA 1225</span>
+          <span class="badge">NFPA 72</span>
+          <span class="badge">UL 2524</span>
+          <span class="badge">14+ Years</span>
+        </div>
+      </div>
+
+      <!-- ============ LEAD FORM ============ -->
+      <div class="form-card" id="lead-form">
+        <h2>Ask us about your building</h2>
+        <p class="form-sub">Tell us where it is and what it is. We&rsquo;ll tell you what&rsquo;s required and what testing costs. No obligation.</p>
+
+        <form id="bdaForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
+          <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
+          <input type="hidden" name="subject" value="New lead — emergency radio coverage landing page">
+          <input type="hidden" name="from_name" value="FirstComms Landing Page">
+          <input type="hidden" name="redirect" value="https://first-comms.com/thank-you.html">
+          <input type="hidden" name="gclid" id="gclid" value="">
+          <input type="hidden" name="page_source" id="pageSource" value="">
+          <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label for="building">Building address or city <span class="opt">(optional)</span></label>
+            <input id="building" name="building_location" type="text" autocomplete="address-level2">
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="buildingType">Building type <span class="opt">(opt.)</span></label>
+              <select id="buildingType" name="building_type">
+                <option value="">Select&hellip;</option>
+                <option>New construction</option>
+                <option>Warehouse / industrial</option>
+                <option>Apartments / high-rise</option>
+                <option>Healthcare</option>
+                <option>School / university</option>
+                <option>Office / retail</option>
+                <option>Parking garage</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="stage">What you need <span class="opt">(opt.)</span></label>
+              <select id="stage" name="project_stage">
+                <option value="">Select&hellip;</option>
+                <option>Not sure &mdash; need advice</option>
+                <option>A radio coverage test</option>
+                <option>My building didn&rsquo;t pass</option>
+                <option>A new system installed</option>
+                <option>An existing system repaired</option>
+                <option>Yearly testing</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Anything else? <span class="opt">(optional)</span></label>
+            <textarea id="message" name="message" rows="2"></textarea>
+          </div>
+
+          <button class="btn btn-block" type="submit" style="margin-top:18px">Speak With An Expert</button>
+
+          <p class="form-foot">
+            We use your details only to answer this request &mdash;
+            see our <a href="privacy.html">privacy policy</a>.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HERO PHOTO =================
+       SLOT READY — drop a real photograph in and delete this comment wrapper.
+       Save it as lp/public-safety-bda/images/hero.jpg (about 1600x460, under ~250KB).
+
+  <figure class="hero-photo">
+    <img src="images/hero.jpg" width="1600" height="460" fetchpriority="high"
+         alt="A FirstComms technician working on an emergency radio system in a building's equipment room.">
+  </figure>
+  ================= END HERO PHOTO ================= -->
+
+  <div class="ticker">
+    <ul class="ticker-list container" aria-label="What we do">
+      <li>Radio Testing</li>
+      <li>System Design</li>
+      <li>Installation</li>
+      <li>Certification</li>
+      <li>Yearly Testing</li>
+    </ul>
+  </div>
+
+  <!-- ================= PLAIN ENGLISH ================= -->
+  <section class="section" id="basics">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Start here</span>
+        <h2>How it works</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div>
+          <h3>1. What the code requires</h3>
+          <p>Emergency responders have to be able to use their radios everywhere in the building.
+            Your fire official checks it before signing off.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wave"/></svg></div>
+          <h3>2. Why most buildings need help</h3>
+          <p>Concrete, steel, coated glass and below-grade levels all block radio signal. Modern
+            construction is particularly good at it.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
+          <h3>3. How it gets solved</h3>
+          <p>A rooftop antenna picks up the signal, an amplifier boosts it, and antennas carry it through
+            the building. You&rsquo;ll see it called a BDA or an ERRC system.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= STATEMENT ================= -->
+  <section class="statement">
+    <div class="container">
+      <p class="reveal">No radio coverage, <em>no certificate of occupancy</em>.</p>
+      <span class="reveal">It is one of the few things that can hold a finished building empty. We test before your
+        inspection is booked, and fix whatever the test finds.</span>
+    </div>
+  </section>
+
+  <!-- ================= THE NUMBERS ================= -->
+  <section class="section" id="code">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">What your building is measured on</span>
+        <h2>The six things an inspector checks</h2>
+      </div>
+
+      <div class="specs reveal">
+        <div class="spec"><b>95%</b><strong>Coverage</strong>
+          <span>Radios must work in 95% of the building &mdash; and 99% of stairwells, lobbies and fire
+            command rooms.</span></div>
+        <div class="spec"><b>Clear</b><strong>Sound quality</strong>
+          <span>Speech has to be understandable, not just audible.</span></div>
+        <div class="spec"><b>&minus;95 dBm</b><strong>Signal strength</strong>
+          <span>The weakest signal the code will accept anywhere in the building.</span></div>
+        <div class="spec"><b>12 hrs</b><strong>Backup power</strong>
+          <span>The system has to keep running through a power cut.</span></div>
+        <div class="spec"><b>Approved</b><strong>Equipment</strong>
+          <span>Only certified public safety gear passes inspection.</span></div>
+        <div class="spec"><b>Yearly</b><strong>Re-testing</strong>
+          <span>Required every year, and it is the building owner&rsquo;s responsibility.</span></div>
+      </div>
+
+      <figure class="meter reveal">
+        <svg viewBox="0 0 900 170" role="img" aria-labelledby="mTitle mDesc">
+          <title id="mTitle">Signal strength scale showing the code minimum</title>
+          <desc id="mDesc">A scale from minus 120 to minus 70 dBm. Anything weaker than minus 95 dBm
+            is below code; minus 95 dBm and stronger meets it.</desc>
+          <rect x="60" y="52" width="390" height="34" fill="#CDB9AC"/>
+          <rect x="450" y="52" width="390" height="34" fill="#FA5019"/>
+          <g font-family="ui-monospace, monospace" font-size="14" font-weight="700" letter-spacing="1.5">
+            <text x="255" y="75" text-anchor="middle" fill="#5A2415">TOO WEAK</text>
+            <text x="645" y="75" text-anchor="middle" fill="#FFFFFF">MEETS CODE</text>
+          </g>
+          <g stroke="#8A5540" stroke-width="2">
+            <path d="M60 86v10M216 86v7M372 86v7M528 86v7M684 86v7M840 86v10"/>
+          </g>
+          <g font-family="ui-monospace, monospace" font-size="12" fill="#8A5540" letter-spacing="1">
+            <text x="60" y="116" text-anchor="middle">-120</text>
+            <text x="216" y="116" text-anchor="middle">-110</text>
+            <text x="372" y="116" text-anchor="middle">-100</text>
+            <text x="528" y="116" text-anchor="middle">-90</text>
+            <text x="684" y="116" text-anchor="middle">-80</text>
+            <text x="840" y="116" text-anchor="middle">-70</text>
+          </g>
+          <path d="M450 32v62" stroke="#240D07" stroke-width="3"/>
+          <path d="M450 24 l10 10 -10 10 -10 -10 Z" fill="#240D07"/>
+          <text x="450" y="150" text-anchor="middle" font-family="ui-monospace, monospace" font-size="14"
+                font-weight="700" letter-spacing="1.5" fill="#240D07">-95 dBm MINIMUM</text>
+        </svg>
+      </figure>
+
+      <p class="fineprint reveal">
+        The exact rules depend on the code edition your town has adopted &mdash; usually IFC 510 and
+        NFPA 1225. We check that for you before anything is designed. Your local fire official has the
+        final say.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= TESTING ================= -->
+  <section class="section bg-card" id="rf-testing">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Step one</span>
+        <h2>It starts with a test</h2>
+        <p class="lede">We walk your building on a grid and measure the radio signal at every point, then
+          hand you a report your fire official will accept. It is the only way to know where you stand.</p>
+      </div>
+
+      <div class="split reveal" style="margin-bottom:16px">
+        <div class="split-item pass">
+          <h3>Already compliant? You&rsquo;re done</h3>
+          <p>You get the report and help closing it out. No system, no equipment, nothing sold.</p>
+        </div>
+        <div class="split-item fix">
+          <h3>Not yet? We make sure you pass</h3>
+          <p>The test shows exactly which areas are short. We design and install a system to cover them,
+            and stay on it until your building is signed off.</p>
+        </div>
+      </div>
+
+      <ul class="checks reveal">
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>Your inspection is coming up and nobody has tested the radio signal.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>Your building didn&rsquo;t pass, or your paperwork came back rejected.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>You have a system already and it&rsquo;s showing a fault or has stopped working.</span></li>
+        <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
+          <span>Your yearly test is overdue, or you&rsquo;re budgeting a new build.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= WHAT WE DO ================= -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">What we do</span>
+        <h2>Five things, done by our own people</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wave"/></svg></div>
+          <h3>Testing</h3>
+          <p>We measure the radio signal throughout your building and give you a report you can submit.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-draft"/></svg></div>
+          <h3>Design</h3>
+          <p>Our engineers design the system and our own architect stamps the drawings.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
+          <h3>Installation</h3>
+          <p>Our technicians install everything &mdash; antennas, cabling, amplifier and backup power.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-doc"/></svg></div>
+          <h3>Certification</h3>
+          <p>We test the finished system and hand over the paperwork your fire official needs.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-cal"/></svg></div>
+          <h3>Yearly testing &amp; repairs</h3>
+          <p>Annual testing, battery changes and repairs, so your system stays compliant.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
+          <h3>Fixing other people&rsquo;s work</h3>
+          <p>Systems that didn&rsquo;t pass, or that another contractor started and walked away from.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section bg-dark" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">What working with us looks like</span>
+        <h2 style="color:#fff">Four steps, one team</h2>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal"><b>01</b><h3>You call</h3>
+          <p>Tell us about the building. We tell you what your town requires.</p></div>
+        <div class="step reveal"><b>02</b><h3>We test</h3>
+          <p>We measure the signal throughout and give you a straight answer.</p></div>
+        <div class="step reveal"><b>03</b><h3>We build</h3>
+          <p>If you need a system, we design it and our crew installs it.</p></div>
+        <div class="step reveal"><b>04</b><h3>We certify</h3>
+          <p>Final testing, your paperwork, then yearly testing after that.</p></div>
+      </div>
+
+      <div class="stats">
+        <div class="stat reveal"><b>14+ Years</b><span>Doing only this work</span></div>
+        <div class="stat reveal"><b>Our Crew</b><span>Testing, design and install &mdash; no subcontractors</span></div>
+        <div class="stat reveal"><b>One Contact</b><span>Same team from first call to yearly testing</span></div>
+        <div class="stat reveal"><b>NJ, NY, PA</b><span>And the towns in between</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COVERAGE ================= -->
+  <section class="section bg-card" id="coverage">
+    <div class="container">
+      <div class="grid grid-2" style="gap:32px;align-items:start">
+        <div class="reveal">
+          <span class="eyebrow">Buildings we work in</span>
+          <h2 style="margin-top:14px">Where radio dies</h2>
+          <p style="margin-top:12px;font-size:.95rem">If it has thick floors, metal, or levels below
+            ground, it probably needs help.</p>
+          <ul class="pill-list" style="margin-top:16px">
+            <li class="pill">Warehouses</li><li class="pill">Apartments</li><li class="pill">Hospitals</li>
+            <li class="pill">Schools</li><li class="pill">Parking garages</li><li class="pill">Data centers</li>
+            <li class="pill">Hotels</li><li class="pill">Offices</li><li class="pill">Factories</li>
+            <li class="pill">Senior living</li><li class="pill">Basements</li>
+          </ul>
+        </div>
+
+        <div class="reveal">
+          <span class="eyebrow">Service area</span>
+          <h2 style="margin-top:14px">Where we work</h2>
+          <p style="margin-top:12px;font-size:.95rem">We deal with each town&rsquo;s fire officials
+            directly, because the rules are always local.</p>
+          <ul class="pill-list" style="margin-top:16px">
+            <li class="pill">Ocean</li><li class="pill">Monmouth</li><li class="pill">Middlesex</li>
+            <li class="pill">Bergen</li><li class="pill">Essex</li><li class="pill">Union</li>
+            <li class="pill">Mercer</li><li class="pill">Burlington</li><li class="pill">New York</li>
+            <li class="pill">Pennsylvania</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY US ================= -->
+  <section class="section bg-dark" id="why">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Why choose us</span>
+        <h2>Six reasons owners pick us over the other guy</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-badge"/></svg></div>
+          <h3>It&rsquo;s all we do</h3>
+          <p>Fourteen years on emergency radio systems only. Most competitors do this on the side between
+            alarm and cabling jobs.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-tools"/></svg></div>
+          <h3>One crew, no subcontractors</h3>
+          <p>The people who test your building are the people who design and install the system. Nothing
+            gets lost in a hand-off.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-hand"/></svg></div>
+          <h3>We&rsquo;ll tell you if you don&rsquo;t need us</h3>
+          <p>If your building already passes, we say so and hand you the report. We don&rsquo;t sell systems
+            buildings don&rsquo;t need.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-draft"/></svg></div>
+          <h3>Drawings stamped in house</h3>
+          <p>Our own architect stamps the plans, so you aren&rsquo;t waiting weeks for an outside engineer
+            to fit you in.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-wrench"/></svg></div>
+          <h3>We take the hard jobs</h3>
+          <p>Buildings that didn&rsquo;t pass and systems others gave up on. We tell you what it takes and
+            hold that price.</p>
+        </div>
+        <div class="card reveal">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24"><use href="#i-shield"/></svg></div>
+          <h3>We&rsquo;re still here next year</h3>
+          <p>We do your yearly testing and keep your records straight, so compliance doesn&rsquo;t quietly
+            lapse after handover.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS =================
+       READY TO GO LIVE — it just needs real quotes.
+       Not filled with invented testimonials: publishing made-up reviews is
+       deceptive to the owners reading them, and under the FTC's rule on
+       consumer reviews the advertiser carries the liability.
+       TO ENABLE: paste three real reviews (the customer's words, their name,
+       the month), then delete this comment wrapper. Styles are already in the
+       stylesheet (.review, .stars).
+  ================= END REVIEWS ================= -->
+
+  <!-- ================= PROJECT GALLERY =================
+       SLOT READY — needs real photographs of your own installs.
+       Save three as images/install-1.jpg, install-2.jpg, install-3.jpg
+       (about 800x600, under ~150KB each), then delete this wrapper.
+
+  <section class="section" id="gallery">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Recent work</span>
+        <h2>Installed, tested, approved</h2>
+      </div>
+      <div class="shots">
+        <figure class="reveal"><img src="images/install-1.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL"><figcaption>Building type, town</figcaption></figure>
+        <figure class="reveal"><img src="images/install-2.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL"><figcaption>Building type, town</figcaption></figure>
+        <figure class="reveal"><img src="images/install-3.jpg" width="800" height="600" loading="lazy" alt="DESCRIBE THE INSTALL"><figcaption>Building type, town</figcaption></figure>
+      </div>
+    </div>
+  </section>
+  ================= END GALLERY ================= -->
+
+  <!-- ================= FAQ ================= -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head center reveal">
+        <span class="eyebrow">Common questions</span>
+        <h2>Questions we get every week</h2>
+      </div>
+
+      <div class="faq" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            How do I know if my building needs this?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>You test it. We measure the radio signal throughout the building and give you
+            a straight answer. If it already passes, you get the report and install nothing. If it
+            doesn&rsquo;t, the same test tells us exactly what the building needs.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            What exactly is this system?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>An antenna on the roof picks up the emergency radio signal from outside, an
+            amplifier boosts it, and antennas around the building spread it to every floor. You&rsquo;ll see it
+            called a BDA, an ERRC system or a public safety DAS &mdash; they all mean the same thing.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            What does it cost?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>It depends on the size of the building, how many floors need covering, and how
+            strong the outside signal is. Anyone giving you a firm price before testing is guessing. We price it
+            once the test tells us what&rsquo;s needed &mdash; and if you pass, there&rsquo;s nothing to buy.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Can this delay my certificate of occupancy?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>In most towns, yes. Radio coverage is usually checked before final sign-off, so
+            a missing or failed test can hold up your CO. That&rsquo;s why it&rsquo;s worth testing early rather
+            than the week of your inspection.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            How long does the whole thing take?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Testing and a report usually take a few days. If a system is needed, design
+            comes next, then installation &mdash; a few days on a mid-size building, longer on a large or
+            occupied one &mdash; and then final testing. Starting early keeps it off your critical path.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" type="button" aria-expanded="false">
+            Do I have to test it every year?
+            <svg class="chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes, and it&rsquo;s the building owner&rsquo;s responsibility, not the
+            installer&rsquo;s. We do the yearly test, replace batteries when they&rsquo;re due, and keep the
+            records ready for your fire official.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:12px">
+          <svg width="24" height="24" viewBox="0 0 200 200" aria-hidden="true">
+            <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+            <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+            <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+          </svg>
+          <span>FIRSTCOMMS</span>
+        </div>
+        <p>Testing, design, installation and yearly testing of emergency responder radio systems for
+          buildings across New Jersey, New York and Pennsylvania.</p>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a class="phone-link" href="tel:+17323145162">732-314-5162</a></li>
+          <li>1390 Lakewood Rd<br>Toms River, NJ 08755</li>
+          <li>Mon&ndash;Fri, 8:00am&ndash;5:00pm ET</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>On this page</h4>
+        <ul>
+          <li><a href="#basics">How it works</a></li>
+          <li><a href="#rf-testing">Testing</a></li>
+          <li><a href="#services">What we do</a></li>
+          <li><a href="#why">Why choose us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> FirstComms. All rights reserved.</span>
+      <span>General guidance, not a code interpretation. Your local fire official has final authority.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-sm phone-link" href="tel:+17323145162">Call 732-314-5162</a>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* Message match for paid search: ?kw=<key> swaps the H1 from a fixed table,
+     so arbitrary query text never reaches the DOM. */
+  var HEADLINES = {
+    'bda-install': 'Public safety BDA installation, <span class="hl">tested and signed off</span>.',
+    'errcs': 'ERRC systems, <span class="hl">designed and installed to code</span>.',
+    'testing': '<span class="hl">RF grid testing</span> for emergency responder radio coverage.',
+    'failed-test': 'Didn&rsquo;t pass your radio coverage test? <span class="hl">We fix it and get it approved.</span>',
+    'annual': 'Annual BDA inspection, <span class="hl">documented and kept current</span>.',
+    'das': 'Public safety DAS, <span class="hl">tested and installed to code</span>.'
+  };
+
+  var params = new URLSearchParams(window.location.search);
+  var kw = params.get('kw');
+  if (kw && Object.prototype.hasOwnProperty.call(HEADLINES, kw)) {
+    var h1 = document.getElementById('hero-headline');
+    if (h1) h1.innerHTML = HEADLINES[kw];
+  }
+
+  /* Scroll reveal */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var targets = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || reduce) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+  }
+
+  /* Scrollspy */
+  var sections = document.querySelectorAll('main section[id]');
+  var navLinks = document.querySelectorAll('.header-nav a[href^="#"]');
+  if (sections.length && navLinks.length && 'IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        Array.prototype.forEach.call(navLinks, function (link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    Array.prototype.forEach.call(sections, function (s) { spy.observe(s); });
+  }
+
+  /* FAQ accordion, one open at a time */
+  var faqList = document.getElementById('faqList');
+  if (faqList) {
+    faqList.addEventListener('click', function (e) {
+      var btn = e.target.closest('.faq-q');
+      if (!btn) return;
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      faqList.querySelectorAll('.faq-item.open').forEach(function (open) {
+        open.classList.remove('open');
+        open.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  }
+
+  function track(name, label) {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', name, { event_category: 'Lead', event_label: label });
+    }
+  }
+  document.querySelectorAll('.phone-link').forEach(function (link) {
+    link.addEventListener('click', function () { track('click_to_call', 'Phone Click'); });
+  });
+
+  var form = document.getElementById('bdaForm');
+  if (!form) return;
+
+  var keyField = form.querySelector('input[name="access_key"]');
+  if (!keyField || !keyField.value || keyField.value.indexOf('YOUR_') === 0) {
+    console.error('[FirstComms LP] Form is not connected: set the Web3Forms access_key.');
+    var notice = document.createElement('p');
+    notice.className = 'form-notice';
+    notice.textContent = 'This form is not connected yet — please call us in the meantime.';
+    form.insertBefore(notice, form.firstElementChild);
+  }
+
+  /* Google Ads click ID, stored on arrival: visitors land from an ad, read, and
+     submit later from a URL that no longer carries it. 90 days = the default window. */
+  (function captureClickId() {
+    var field = document.getElementById('gclid');
+    if (!field) return;
+    var KEY = 'fc_gclid';
+    var MAX_AGE = 90 * 24 * 60 * 60 * 1000;
+    var fromUrl = params.get('gclid') || params.get('wbraid') || params.get('gbraid');
+    if (fromUrl) {
+      try { localStorage.setItem(KEY, JSON.stringify({ v: fromUrl, t: Date.now() })); } catch (e) {}
+      field.value = fromUrl;
+      return;
+    }
+    try {
+      var saved = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (saved && saved.v && Date.now() - saved.t < MAX_AGE) field.value = saved.v;
+      else if (saved) localStorage.removeItem(KEY);
+    } catch (e) {}
+  })();
+
+  var source = document.getElementById('pageSource');
+  if (source) {
+    source.value = [
+      kw ? 'kw=' + kw : '',
+      params.get('utm_campaign') ? 'campaign=' + params.get('utm_campaign') : '',
+      params.get('utm_term') ? 'term=' + params.get('utm_term') : ''
+    ].filter(Boolean).join(' | ').slice(0, 200) || 'direct';
+  }
+
+  var redirect = form.querySelector('input[name="redirect"]');
+  if (redirect) redirect.value = new URL('thank-you.html', window.location.href).href;
+
+  form.addEventListener('submit', function (e) {
+    if (!form.checkValidity()) {
+      e.preventDefault();
+      form.reportValidity();
+      return;
+    }
+    track('form_submit', 'BDA Landing Page');
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+  });
+
+  var year = document.getElementById('year');
+  if (year) year.textContent = String(new Date().getFullYear());
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request received | FirstComms</title>
+<meta name="description" content="Thanks — your enquiry reached us. We'll be in touch within one business day.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#240D07">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Crect%20width%3D%27200%27%20height%3D%27200%27%20fill%3D%27%23240D07%27%2F%3E%3Cpath%20d%3D%27M68%2040%20L158%2040%20L158%2054%20L144%2068%20L68%2068%20L68%20144%20L54%20158%20L40%20158%20L40%2068%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M100%2078%20L152%2078%20L152%2090%20L140%20102%20L100%20102%20L100%20140%20L88%20152%20L76%20152%20L76%20102%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M130%20118%20L152%20118%20L152%20140%20L140%20152%20L118%20152%20L118%20130%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
+
+<style>
+  :root{
+    --cream-100:#F7F1ED; --cream-200:#EBE1DA; --cream-400:#CDB9AC;
+    --brown-900:#240D07; --brown-700:#5A2415; --brown-600:#74341E; --brown-200:#C8B3A6;
+    --orange:#F4491B; --orange-btn:#D93F12;
+    --font:ui-monospace,"SF Mono","JetBrains Mono","Roboto Mono","DejaVu Sans Mono",Menlo,Consolas,monospace;
+  }
+  *,*::before,*::after{box-sizing:border-box}*{margin:0}
+  body{min-height:100vh;display:grid;place-items:center;padding:36px 20px;
+    font-family:var(--font);line-height:1.75;color:var(--cream-200);background:var(--brown-900)}
+  .wrap{max-width:640px;text-align:center}
+  .mark{margin:0 auto 24px}
+  h1{font-size:clamp(1.4rem,3.6vw,2.1rem);font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    line-height:1.25;color:var(--cream-100)}
+  .bar{width:56px;height:2px;background:var(--orange);margin:20px auto 0}
+  p{margin-top:20px;color:var(--brown-200);font-size:.92rem}
+  ol{margin:28px auto 0;padding:0;max-width:460px;text-align:left;display:grid;gap:0;list-style:none;
+    border:1px solid rgba(255,255,255,.16)}
+  ol li{display:flex;gap:14px;padding:14px 18px;border-bottom:1px solid rgba(255,255,255,.16);
+    color:var(--brown-200);font-size:.85rem;line-height:1.7}
+  ol li:last-child{border-bottom:0}
+  ol li b{flex:none;color:var(--orange);font-size:.75rem;letter-spacing:.1em;padding-top:2px}
+  .actions{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+  .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;font-size:.76rem;
+    font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;border:0;
+    clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+  .btn-primary{background:var(--orange-btn);color:#fff}
+  .btn-light{background:var(--cream-100);color:var(--brown-900)}
+  .fine{margin-top:28px;font-size:.76rem;color:var(--brown-200);line-height:1.7}
+  a{color:inherit}
+</style>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7BZ01Y3KFS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7BZ01Y3KFS');
+  // The real conversion. Mark generate_lead as a key event in GA4, and import
+  // it (or the Google Ads snippet) as the campaign's primary conversion action.
+  gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'BDA Landing Page' });
+</script>
+</head>
+
+<body>
+<main class="wrap">
+  <svg class="mark" width="52" height="52" viewBox="0 0 200 200" aria-hidden="true">
+    <path d="M68 40 L158 40 L158 54 L144 68 L68 68 L68 144 L54 158 L40 158 L40 68 Z" fill="#FA5019"/>
+    <path d="M100 78 L152 78 L152 90 L140 102 L100 102 L100 140 L88 152 L76 152 L76 102 Z" fill="#FA5019"/>
+    <path d="M130 118 L152 118 L152 140 L140 152 L118 152 L118 130 Z" fill="#FA5019"/>
+  </svg>
+
+  <h1>Got it &mdash; your request is in</h1>
+  <div class="bar"></div>
+  <p>An RF engineer will review the building details and get back to you within one business day.</p>
+
+  <ol>
+    <li><b>01</b><span>We check what the AHJ in that jurisdiction requires.</span></li>
+    <li><b>02</b><span>We tell you whether a grid test or a full system is the right next step.</span></li>
+    <li><b>03</b><span>You get a clear price for the testing, with no obligation to go further.</span></li>
+  </ol>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="tel:+17323145162">Call 732-314-5162</a>
+    <a class="btn btn-light" href="index.html">Back To The Page</a>
+  </div>
+
+  <p class="fine">In a rush &mdash; failed inspection, CO on the line? Call and say so. We move those first.</p>
+</main>
+</body>
+</html>
