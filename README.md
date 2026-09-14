@@ -35,15 +35,16 @@ python3 -m http.server 8000
       real quotes: the customer's own words, their name, and the month.
 - [ ] **Analytics** — currently reports to Steady Growth's GA4 property
       (`G-7BZ01Y3KFS`). Swap it in all three files if FirstComms wants their own.
-- [ ] **Form recipients** — leads must reach BOTH yosef@steadygrowthmarketing.com
-      and dan@cellsignalsolutions.com. The form carries a `ccemail` hidden field
-      for Dan, but Web3Forms only honours it on the PRO plan. On the free plan
-      mail goes only to the address the access key belongs to. Pick one:
-      1. Issue the access key to a distribution group that contains both
-         addresses (cleanest — recipients change without touching code).
-      2. A forwarding rule on yosef@ that copies these to dan@.
-      3. Upgrade Web3Forms to PRO, at which point the `ccemail` field just works.
-      Whichever you choose, send a live test and confirm both inboxes receive it.
+- [ ] **Form recipient — ONE ACTION OUTSTANDING.** Leads are meant to go to
+      dan@cellsignalsolutions.com. In Web3Forms the recipient is the address the
+      access key was issued to; it cannot be set from the markup. So:
+      1. Go to web3forms.com and enter `dan@cellsignalsolutions.com`.
+      2. Web3Forms emails the access key to that address.
+      3. Put it in `index.html` in place of the current `access_key` value.
+      Until that happens the form still works, but submissions go to
+      yosef@steadygrowthmarketing.com — the key is left in place deliberately so
+      no lead is dropped in the meantime. Send a live test afterwards and confirm
+      Dan receives it.
 
 ## Google Ads notes
 

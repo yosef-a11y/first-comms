@@ -496,13 +496,13 @@ strong{font-weight:700;color:var(--brown-700)}
         <p class="form-sub">Tell us where it is and what it is. We&rsquo;ll tell you what&rsquo;s required and what testing costs. No obligation.</p>
 
         <form id="bdaForm" method="POST" action="https://api.web3forms.com/submit" novalidate>
+          <!-- The recipient is decided by this key, not by any field on the form.
+               This key belongs to yosef@steadygrowthmarketing.com and is left in
+               place only so submissions are not dropped. REPLACE with the key
+               issued to dan@cellsignalsolutions.com to hand leads over. -->
           <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
           <input type="hidden" name="subject" value="New lead — emergency radio coverage landing page">
           <input type="hidden" name="from_name" value="FirstComms Landing Page">
-          <!-- Second recipient. Web3Forms only honours ccemail on the PRO plan;
-               on the free plan it is ignored and mail goes only to the address
-               the access key belongs to. Semicolon-separate for more. -->
-          <input type="hidden" name="ccemail" value="dan@cellsignalsolutions.com">
           <input type="hidden" name="redirect" value="https://first-comms.com/thank-you.html">
           <input type="hidden" name="gclid" id="gclid" value="">
           <input type="hidden" name="page_source" id="pageSource" value="">
