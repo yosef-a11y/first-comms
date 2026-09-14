@@ -499,6 +499,10 @@ strong{font-weight:700;color:var(--brown-700)}
           <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
           <input type="hidden" name="subject" value="New lead — emergency radio coverage landing page">
           <input type="hidden" name="from_name" value="FirstComms Landing Page">
+          <!-- Second recipient. Web3Forms only honours ccemail on the PRO plan;
+               on the free plan it is ignored and mail goes only to the address
+               the access key belongs to. Semicolon-separate for more. -->
+          <input type="hidden" name="ccemail" value="dan@cellsignalsolutions.com">
           <input type="hidden" name="redirect" value="https://first-comms.com/thank-you.html">
           <input type="hidden" name="gclid" id="gclid" value="">
           <input type="hidden" name="page_source" id="pageSource" value="">

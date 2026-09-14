@@ -35,8 +35,15 @@ python3 -m http.server 8000
       real quotes: the customer's own words, their name, and the month.
 - [ ] **Analytics** — currently reports to Steady Growth's GA4 property
       (`G-7BZ01Y3KFS`). Swap it in all three files if FirstComms wants their own.
-- [ ] **Form** — posts to Web3Forms using Steady Growth's access key. Swap for
-      the client's key if leads should go straight to them.
+- [ ] **Form recipients** — leads must reach BOTH yosef@steadygrowthmarketing.com
+      and dan@cellsignalsolutions.com. The form carries a `ccemail` hidden field
+      for Dan, but Web3Forms only honours it on the PRO plan. On the free plan
+      mail goes only to the address the access key belongs to. Pick one:
+      1. Issue the access key to a distribution group that contains both
+         addresses (cleanest — recipients change without touching code).
+      2. A forwarding rule on yosef@ that copies these to dan@.
+      3. Upgrade Web3Forms to PRO, at which point the `ccemail` field just works.
+      Whichever you choose, send a live test and confirm both inboxes receive it.
 
 ## Google Ads notes
 
