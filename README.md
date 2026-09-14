@@ -46,13 +46,11 @@ python3 -m http.server 8000
       no lead is dropped in the meantime. Send a live test afterwards and confirm
       Dan receives it.
 
-- [ ] **WhatConverts** — a commented slot sits in the `<head>` of all three
-      pages. Paste the web tracking code from WhatConverts (Tracking > Web
-      Tracking Code) and delete the comment wrapper. Two things to check after:
-      dynamic number insertion should swap the header, footer and mobile-bar
-      numbers (all three are plain `tel:` links, so they are swappable), and the
-      tracking number must forward to 732-314-5162. Form capture should work as
-      is — WhatConverts hooks the submit event before the redirect fires.
+- [x] **WhatConverts** — installed in the `<head>` of all three pages
+      (profile 170287). Verify two things on the live site: that dynamic number
+      insertion swaps all three `tel:` placements on the landing page (header,
+      footer, mobile call bar), and that the tracking number forwards to
+      732-314-5162. Form capture hooks the submit event before the redirect.
 
 ## Google Ads notes
 

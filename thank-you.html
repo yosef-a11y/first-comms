@@ -52,18 +52,12 @@
   gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'BDA Landing Page' });
 </script>
 
-<!-- ================= WHATCONVERTS =================
-     PASTE THE SNIPPET HERE and delete this comment wrapper. It looks like:
-       <script type="text/javascript" src="//scripts.iconnode.com/XXXXXX.js"></script>
-     Get it from WhatConverts: Tracking > Web Tracking Code, for this profile.
-
-     It belongs in <head>, not before </body>: dynamic number insertion swaps
-     the phone numbers on the page, and loading late means a visitor can see
-     and tap the real number before the tracking number replaces it.
-
-     This must go on ALL THREE pages — index, thank-you and privacy. The
-     thank-you page matters most: it is where the form conversion completes.
-================================================= -->
+<!-- WhatConverts — lead tracking and dynamic number insertion.
+     The inline block snapshots the landing URL, referrer, query string and hash
+     at load; the loader follows it. Order matters, and both sit in <head> so the
+     tracking number swaps in before a visitor can tap the real one. -->
+<script>var $wc_load=function(a){return JSON.parse(JSON.stringify(a))},$wc_leads=$wc_leads||{doc:{url:$wc_load(document.URL),ref:$wc_load(document.referrer),search:$wc_load(location.search),hash:$wc_load(location.hash)}};</script>
+<script src="//s.ksrndkehqnwntyxlhgto.com/170287.js"></script>
 </head>
 
 <body>
