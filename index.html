@@ -115,8 +115,6 @@ strong{font-weight:700;color:var(--brown-700)}
 .hero{position:relative;overflow:hidden;padding:clamp(30px,4.5vw,52px) 0 clamp(34px,5vw,58px)}
 .hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
 .hero-grid{position:relative;display:grid;gap:30px;align-items:start}
-@media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
-.hero-side{display:grid;gap:18px;align-content:start}
 .hero h1{margin-top:14px;font-size:clamp(1.7rem,3.5vw,2.6rem)}
 .hero h1 .hl{color:var(--orange-btn)}
 .hero-sub{margin-top:16px;font-size:1.08rem;line-height:1.6;max-width:48ch}
@@ -259,9 +257,27 @@ strong{font-weight:700;color:var(--brown-700)}
 /* Sits inside the hero container, not as a band beneath it, so it reads as
    part of the hero rather than the first thing after it. Capped in height and
    cropped, because the full frame is too tall to keep the fold useful. */
-.hero-photo{margin:0}
-.hero-photo img{display:block;width:100%;height:auto;max-height:230px;object-fit:cover;
+/* Mobile: a banner above the copy. Desktop: see the 1000px block below, where
+   it leaves the flow and fills the right-hand side of the hero to the edge. */
+.hero-photo{margin:0 0 24px}
+.hero-photo img{display:block;width:100%;height:auto;max-height:240px;object-fit:cover;
   clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+
+@media(min-width:1000px){
+  /* Copy keeps to the left half of the container; the photo leaves the flow and
+     runs to the right edge of the viewport, which is the reference site's shape. */
+  .hero{min-height:540px;display:flex;align-items:center}
+  /* static, so the photo's containing block is .hero (the viewport-wide one)
+     rather than the centred container — otherwise it stops at the gutter. */
+  .hero-grid{position:static;grid-template-columns:minmax(0,52%);gap:0}
+  .hero-photo{position:absolute;top:0;right:0;bottom:0;width:46vw;margin:0}
+  .hero-photo img{width:100%;height:100%;max-height:none;object-fit:cover;object-position:64% center;clip-path:none}
+}
+
+/* ---------- Enquiry band ---------- */
+.form-band{background:var(--cream-100);padding:clamp(40px,5vw,60px) 0;
+  border-top:1px solid var(--cream-300);border-bottom:1px solid var(--cream-300)}
+.form-band .form-card{max-width:780px;margin-inline:auto}
 
 
 /* ---------- Signal meter ---------- */
@@ -475,6 +491,11 @@ strong{font-weight:700;color:var(--brown-700)}
     </svg>
 
     <div class="container hero-grid">
+      <figure class="hero-photo">
+          <img src="images/hero.jpg" width="1376" height="714" fetchpriority="high"
+               alt="Two firefighters using their handheld radios in a building equipment room, beside a red emergency responder radio amplifier and its battery backup cabinet.">
+        </figure>
+
       <div>
         <span class="eyebrow">ERRC &amp; BDA Systems</span>
         <h1 id="hero-headline">Firefighters need their radios to work inside your building. <span class="hl">We make sure they do.</span></h1>
@@ -502,14 +523,12 @@ strong{font-weight:700;color:var(--brown-700)}
         </div>
       </div>
 
-      <!-- Photo and form share the second column, photo first: it puts the
-           image beside the headline instead of below a tall form. -->
-      <div class="hero-side">
-        <figure class="hero-photo">
-          <img src="images/hero.jpg" width="1376" height="714" fetchpriority="high"
-               alt="Two firefighters using their handheld radios in a building equipment room, beside a red emergency responder radio amplifier and its battery backup cabinet.">
-        </figure>
+    </div>
+  </section>
 
+  <!-- ================= ENQUIRY ================= -->
+  <section class="form-band" id="enquiry">
+    <div class="container">
       <!-- ============ LEAD FORM ============ -->
       <div class="form-card" id="lead-form">
         <h2>Ask us about your building</h2>
@@ -591,7 +610,6 @@ strong{font-weight:700;color:var(--brown-700)}
           </p>
         </form>
       </div>
-
     </div>
   </section>
 
