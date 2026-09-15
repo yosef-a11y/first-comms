@@ -26,10 +26,11 @@ python3 -m http.server 8000
 
 ## Still to do
 
-- [x] **Photos** — hero and a three-up equipment section are live. Source files
-      were re-encoded before committing: 2.34MB of uploads became 605KB. If you
-      replace one, resize it first — a 700KB image in the hero undoes the work
-      done to make this page load in one request.
+- [x] **Photos** — three in the equipment section. There is deliberately no
+      photo in the hero: it was tried three ways (band beneath, above the form,
+      filling the right side) and none of them improved on the plain
+      headline-and-form hero, so the hero stays text. `images/hero.jpg` and
+      `images/install-4.jpg` are kept in the repo, unused, if that changes.
 - [ ] **Photo provenance** — the equipment section is titled "What actually goes
       on your wall" and captioned descriptively, because these images are not
       documented as FirstComms' own projects. If they ARE photos of your installs,
