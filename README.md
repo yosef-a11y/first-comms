@@ -50,7 +50,7 @@ python3 -m http.server 8000
       (profile 170287). Verify two things on the live site: that dynamic number
       insertion swaps all three `tel:` placements on the landing page (header,
       footer, mobile call bar), and that the tracking number forwards to
-      732-314-5162. Form capture hooks the submit event before the redirect.
+      732-302-8992. Form capture hooks the submit event before the redirect.
 
 ## Google Ads notes
 
