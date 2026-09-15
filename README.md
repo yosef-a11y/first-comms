@@ -26,10 +26,17 @@ python3 -m http.server 8000
 
 ## Still to do
 
-- [ ] **Hero photo** — a slot is wired up and commented out in `index.html`.
-      Save a real photo as `images/hero.jpg` (~1600x460, under 250KB) and delete
-      the comment wrapper around the `<figure class="hero-photo">` block.
-- [ ] **Project gallery** — same idea, three images at `images/install-1..3.jpg`.
+- [x] **Photos** — hero and a three-up equipment section are live. Source files
+      were re-encoded before committing: 2.34MB of uploads became 605KB. If you
+      replace one, resize it first — a 700KB image in the hero undoes the work
+      done to make this page load in one request.
+- [ ] **Photo provenance** — the equipment section is titled "What actually goes
+      on your wall" and captioned descriptively, because these images are not
+      documented as FirstComms' own projects. If they ARE photos of your installs,
+      retitle it "Recent work" and caption each with the building type and town;
+      that is a stronger proof section. If they are stock or generated, leave the
+      wording as it is — claiming them as your projects would not be true.
+      `images/install-4.jpg` is a spare, currently unused.
 - [ ] **Reviews** — the section is built and styled but deliberately left
       commented out rather than filled with invented testimonials. It needs three
       real quotes: the customer's own words, their name, and the month.
