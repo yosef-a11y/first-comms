@@ -116,6 +116,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
 .hero-grid{position:relative;display:grid;gap:30px;align-items:start}
 @media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
+.hero-side{display:grid;gap:18px;align-content:start}
 .hero h1{margin-top:14px;font-size:clamp(1.7rem,3.5vw,2.6rem)}
 .hero h1 .hl{color:var(--orange-btn)}
 .hero-sub{margin-top:16px;font-size:1.08rem;line-height:1.6;max-width:48ch}
@@ -254,9 +255,13 @@ strong{font-weight:700;color:var(--brown-700)}
 .review cite{display:block;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-style:normal;
   font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brown-700)}
 
-/* ---------- Hero photograph (enable with the slot in <main>) ---------- */
-.hero-photo{background:var(--brown-900);margin:0}
-.hero-photo img{display:block;width:100%;height:auto;object-fit:cover;max-height:460px}
+/* ---------- Hero photograph ---------- */
+/* Sits inside the hero container, not as a band beneath it, so it reads as
+   part of the hero rather than the first thing after it. Capped in height and
+   cropped, because the full frame is too tall to keep the fold useful. */
+.hero-photo{margin:0}
+.hero-photo img{display:block;width:100%;height:auto;max-height:230px;object-fit:cover;
+  clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
 
 
 /* ---------- Signal meter ---------- */
@@ -497,6 +502,14 @@ strong{font-weight:700;color:var(--brown-700)}
         </div>
       </div>
 
+      <!-- Photo and form share the second column, photo first: it puts the
+           image beside the headline instead of below a tall form. -->
+      <div class="hero-side">
+        <figure class="hero-photo">
+          <img src="images/hero.jpg" width="1376" height="714" fetchpriority="high"
+               alt="Two firefighters using their handheld radios in a building equipment room, beside a red emergency responder radio amplifier and its battery backup cabinet.">
+        </figure>
+
       <!-- ============ LEAD FORM ============ -->
       <div class="form-card" id="lead-form">
         <h2>Ask us about your building</h2>
@@ -578,13 +591,10 @@ strong{font-weight:700;color:var(--brown-700)}
           </p>
         </form>
       </div>
+
     </div>
   </section>
 
-  <figure class="hero-photo">
-    <img src="images/hero.jpg" width="1376" height="714" fetchpriority="high"
-         alt="Two firefighters using their handheld radios in a building equipment room, beside a red emergency responder radio amplifier and its battery backup cabinet.">
-  </figure>
 
   <div class="ticker">
     <ul class="ticker-list container" aria-label="What we do">
