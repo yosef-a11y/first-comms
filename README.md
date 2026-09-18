@@ -60,6 +60,30 @@ python3 -m http.server 8000
       footer, mobile call bar), and that the tracking number forwards to
       732-302-8992. Form capture hooks the submit event before the redirect.
 
+## Tags on the page
+
+| Tag | ID | Pages |
+| --- | --- | --- |
+| GA4 | `G-7BZ01Y3KFS` | all three |
+| Google Ads | `AW-17861173083` | all three |
+| WhatConverts | profile `170287` | all three |
+
+GA4 and Google Ads share one `gtag.js` loader with two `config` lines. Pasting
+the Ads snippet whole would load the same library twice, which Google does not
+need and the visitor pays for.
+
+**Conversion tracking is not finished.** The Ads tag alone gives remarketing and
+lets Google Ads import GA4 conversions, but a Google Ads conversion action fires
+its own event. Create the conversion action in Google Ads, take the send_to value
+(`AW-17861173083/<label>`), and add to `thank-you.html`:
+
+```js
+gtag('event', 'conversion', { send_to: 'AW-17861173083/<label>' });
+```
+
+`thank-you.html` already fires GA4 `generate_lead` on load, so that page is the
+right place for it — it is only reached after a real submission.
+
 ## Google Ads notes
 
 - Final URLs must point at `https://first-comms.com/` — the display URL domain
