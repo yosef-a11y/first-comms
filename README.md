@@ -41,8 +41,10 @@ python3 -m http.server 8000
 - [ ] **Reviews** — the section is built and styled but deliberately left
       commented out rather than filled with invented testimonials. It needs three
       real quotes: the customer's own words, their name, and the month.
-- [ ] **Analytics** — currently reports to Steady Growth's GA4 property
-      (`G-7BZ01Y3KFS`). Swap it in all three files if FirstComms wants their own.
+- [x] **Analytics** — reports to the FirstComms GA4 property `G-6BRYRS4HPE`.
+      Two things still need doing inside GA4 itself: mark `generate_lead` as a
+      key event (Admin > Events), or form submissions will not count as
+      conversions; and link Google Ads to this property (Admin > Product links).
 - [ ] **Form recipient — ONE ACTION OUTSTANDING.** Leads are meant to go to
       dan@cellsignalsolutions.com. In Web3Forms the recipient is the address the
       access key was issued to; it cannot be set from the markup. So:
@@ -64,7 +66,7 @@ python3 -m http.server 8000
 
 | Tag | ID | Pages |
 | --- | --- | --- |
-| GA4 | `G-7BZ01Y3KFS` | all three |
+| GA4 | `G-6BRYRS4HPE` | all three |
 | Google Ads | `AW-17861173083` | all three |
 | WhatConverts | profile `170287` | all three |
 
