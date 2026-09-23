@@ -126,6 +126,25 @@ strong{font-weight:700;color:var(--brown-700)}
 .badge{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   padding:7px 11px;color:var(--brown-600);border:1px solid var(--cream-400);background:var(--cream-100)}
 
+/* Hero photo block. Hidden by default: it only earns its place at widths where
+   the hero is side by side and the copy column has empty space beneath it. */
+.hero-figure{display:none;margin:0}
+@media(min-width:1000px){
+  /* stretch lets the copy column fill the row so the photo can pin to its
+     bottom; the form card opts back out so it keeps its natural height
+     instead of growing a band of dead space under the submit button. */
+  .hero-grid{align-items:stretch}
+  .hero-grid > .form-card{align-self:start}
+  .hero-copy{display:flex;flex-direction:column}
+  /* margin-top:auto alone would let the photo butt against the badges whenever
+     the copy column has no slack, so the badges carry the minimum gap. */
+  .hero-copy .badge-row{margin-bottom:36px}
+  /* margin-top:auto pins the photo to the bottom of the copy column, so its
+     lower edge lines up with the form card's instead of floating mid-column. */
+  .hero-figure{display:block;margin-top:auto;height:232px;
+    background:url("images/hero.jpg") no-repeat center 38%;background-size:cover}
+}
+
 /* ---------- Form ---------- */
 .form-card{background:var(--cream-50);border:1px solid var(--cream-300);border-top:4px solid var(--orange);
   padding:24px 22px;box-shadow:var(--shadow-md)}
@@ -471,7 +490,7 @@ strong{font-weight:700;color:var(--brown-700)}
     </svg>
 
     <div class="container hero-grid">
-      <div>
+      <div class="hero-copy">
         <span class="eyebrow">ERRC &amp; BDA Systems</span>
         <h1 id="hero-headline">Firefighters need their radios to work inside your building. <span class="hl">We make sure they do.</span></h1>
 
@@ -496,6 +515,18 @@ strong{font-weight:700;color:var(--brown-700)}
           <span class="badge">UL 2524</span>
           <span class="badge">14+ Years</span>
         </div>
+
+        <!-- The photo gets its own bounded block in the empty lower-left of the
+             hero. It sits below the copy, never behind it, at full strength with
+             hard edges — no scrim, no fade, nothing overlapping it. Desktop only;
+             on a stacked hero it would just push the form down.
+             It is a CSS background rather than an <img> on purpose: an <img> is
+             found by the preload scanner and downloaded on phones even though
+             this block is display:none there, wasting 177KB on exactly the
+             visitors most sensitive to it. Backgrounds on hidden elements are
+             never fetched. role/aria-label keep it announced to screen readers. -->
+        <div class="hero-figure" role="img"
+             aria-label="Two firefighters testing handheld radios beside an installed signal booster in a building's service room"></div>
       </div>
 
       <!-- ============ LEAD FORM ============ -->
