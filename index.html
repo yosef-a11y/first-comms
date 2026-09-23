@@ -11,6 +11,13 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="format-detection" content="telephone=yes">
 
+<!-- The hero photograph is a CSS background, so it is not discovered until the
+     stylesheet is parsed. Preloading it starts the fetch with the HTML instead.
+     The media query matches the one that turns the photo on, so phones never
+     request it (the pseudo-element is display:none there, and browsers skip
+     backgrounds on hidden elements). -->
+<link rel="preload" as="image" href="images/hero.jpg" media="(min-width:1000px)">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FirstComms">
 <meta property="og:title" content="Emergency Radio Coverage for Buildings | Testing &amp; BDA Installation">
@@ -113,9 +120,37 @@ strong{font-weight:700;color:var(--brown-700)}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;padding:clamp(30px,4.5vw,52px) 0 clamp(34px,5vw,58px)}
-.hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
+/* The photograph is the hero's background, not an element in it. A gradient
+   scrim keeps the left side solid cream for the copy and lets the image come
+   through on the right, so there is no edge or box anywhere. It is desktop-only
+   (turned on in the min-width:1000px block below): once the hero stacks, the
+   form sits over the photo and there is no clear side to put it on.
+   Sized by HEIGHT, not width — 140% of the hero's height can never leave a gap
+   however tall the hero grows, which a width-based `125% auto` could. Anchored
+   from the RIGHT for the same reason the scrim is: it holds the firefighter in
+   the gap beside the form card instead of sliding him off as the window narrows. */
+.hero::before{content:"";position:absolute;inset:0;z-index:0;display:none;
+  background:url("images/hero.jpg") no-repeat;background-size:auto 140%;background-position:right -300px center;}
+/* The scrim's stops are measured from the RIGHT edge, not as percentages of the
+   width. The photo is sized off the hero's height, so it is the same number of
+   pixels wide at every viewport; a percentage scrim would therefore uncover more
+   and more of it as the window narrows. Fixed offsets keep the cream-to-photo
+   transition a constant distance from the form card at every width. */
+.hero::after{content:"";position:absolute;inset:0;z-index:1;display:none;background:
+  linear-gradient(100deg,
+    var(--cream-200) 0%, var(--cream-200) calc(100% - 600px),
+    rgba(235,225,218,.95) calc(100% - 470px), rgba(235,225,218,.66) calc(100% - 320px),
+    rgba(235,225,218,.34) calc(100% - 110px), rgba(235,225,218,.28) 100%),
+  linear-gradient(to bottom, rgba(235,225,218,.5) 0%, rgba(235,225,218,0) 22%,
+    rgba(235,225,218,0) 78%, rgba(235,225,218,.5) 100%);}
+.hero > *{position:relative;z-index:2}
+.hero-lines{display:none}
 .hero-grid{position:relative;display:grid;gap:30px;align-items:start}
-@media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
+@media(min-width:1000px){
+  .hero{min-height:660px;display:flex;align-items:center}
+  .hero::before,.hero::after{display:block}
+  .hero-grid{position:static;width:100%;grid-template-columns:1fr minmax(0,430px);gap:56px}
+}
 .hero h1{margin-top:14px;font-size:clamp(1.7rem,3.5vw,2.6rem)}
 .hero h1 .hl{color:var(--orange-btn)}
 .hero-sub{margin-top:16px;font-size:1.08rem;line-height:1.6;max-width:48ch}
