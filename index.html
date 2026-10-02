@@ -126,9 +126,27 @@ strong{font-weight:700;color:var(--brown-700)}
 .badge{font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   padding:7px 11px;color:var(--brown-600);border:1px solid var(--cream-400);background:var(--cream-100)}
 
-/* Hero photo block. Hidden by default: it only earns its place at widths where
-   the hero is side by side and the copy column has empty space beneath it. */
-.hero-figure{display:none;margin:0}
+/* Self-select chips. Styled off .badge so they read as part of the same system,
+   but clearly tappable: filled background, pointer, and a 44px tap target. */
+.qual{margin-top:22px}
+.qual-label{display:block;font-family:var(--mono);font-size:.64rem;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brown-400);margin-bottom:9px}
+.qual-row{display:flex;flex-wrap:wrap;gap:8px}
+.qual-chip{display:inline-flex;align-items:center;text-decoration:none;
+  font-family:var(--sans);font-size:.88rem;font-weight:600;line-height:1.2;
+  min-height:44px;padding:10px 14px;cursor:pointer;color:var(--brown-700);
+  background:var(--cream-50);border:1px solid var(--cream-400);
+  transition:background .14s,border-color .14s,color .14s}
+.qual-chip:hover{background:#fff;border-color:var(--orange);color:var(--brown-900)}
+.qual-chip.is-on{background:var(--orange-btn);border-color:var(--orange-btn);color:#fff}
+.qual-chip:focus-visible{outline:2px solid var(--orange-btn);outline-offset:2px}
+
+/* Hero photo block. On phones it sits below the copy to break up a long run of
+   text; on desktop it fills the empty lower-left of the copy column. The two
+   sizes are separate files behind a media query, so each viewport downloads
+   only its own (55KB on phones rather than the 177KB desktop crop). */
+.hero-figure{display:block;margin:26px 0 0;height:168px;
+  background:url("images/hero-mobile.jpg") no-repeat center 38%;background-size:cover}
 @media(min-width:1000px){
   /* stretch lets the copy column fill the row so the photo can pin to its
      bottom; the form card opts back out so it keeps its natural height
@@ -141,8 +159,11 @@ strong{font-weight:700;color:var(--brown-700)}
   .hero-copy .badge-row{margin-bottom:36px}
   /* margin-top:auto pins the photo to the bottom of the copy column, so its
      lower edge lines up with the form card's instead of floating mid-column. */
-  .hero-figure{display:block;margin-top:auto;height:232px;
-    background:url("images/hero.jpg") no-repeat center 38%;background-size:cover}
+  /* 180px keeps the hero from growing so tall that nothing below it is visible:
+     the photo's top edge now sits just inside the fold on a laptop, which doubles
+     as the cue that there is more page under it. */
+  .hero-figure{margin:0;margin-top:auto;height:180px;
+    background-image:url("images/hero.jpg")}
 }
 
 /* ---------- Form ---------- */
@@ -498,6 +519,21 @@ strong{font-weight:700;color:var(--brown-700)}
           Fire code requires it. Concrete and steel block the signal. We test your building and install
           the system that fixes it &mdash; a <strong>BDA</strong>, also called an <strong>ERRC system</strong>.
         </p>
+
+        <!-- People arrive from an ad with one specific trigger already in mind.
+             Letting them say which one in a single tap gives them something to
+             do in the first few seconds, sends them to the part of the page that
+             answers them, pre-fills the form so there is less to do later, and
+             reports the segment to GA so the ad spend can be read by intent. -->
+        <div class="qual">
+          <span class="qual-label">Which one is you?</span>
+          <div class="qual-row" role="group" aria-label="What brings you here">
+            <a class="qual-chip" href="#rf-testing" data-stage="didn">My building failed a test</a>
+            <a class="qual-chip" href="#rf-testing" data-stage="coverage test">I need a test</a>
+            <a class="qual-chip" href="#basics" data-stage="new system">New construction</a>
+            <a class="qual-chip" href="#basics" data-stage="Not sure">Not sure yet</a>
+          </div>
+        </div>
 
         <ul class="hero-points">
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
@@ -1152,6 +1188,37 @@ strong{font-weight:700;color:var(--brown-700)}
   document.querySelectorAll('.phone-link').forEach(function (link) {
     link.addEventListener('click', function () { track('click_to_call', 'Phone Click'); });
   });
+
+  /* Hero self-select. Each chip names a situation, then jumps to the section that
+     answers it and pre-selects the matching "what you need" option so the form is
+     shorter when they get there. They are real links, so with JavaScript off they
+     still jump to the right section; the pre-fill and the GA event are the
+     enhancement. Matching is done on a substring of the option
+     text rather than the whole string, so HTML entities (the curly apostrophe in
+     "didn't", the em dash in "Not sure — need advice") can't break the pairing. */
+  var qualChips = document.querySelectorAll('.qual-chip');
+  if (qualChips.length) {
+    var stageSel = document.getElementById('stage');
+    qualChips.forEach(function (chip) {
+      chip.addEventListener('click', function (e) {
+        var key = chip.getAttribute('data-stage');
+        if (stageSel) {
+          for (var i = 0; i < stageSel.options.length; i++) {
+            if (stageSel.options[i].text.indexOf(key) !== -1) { stageSel.selectedIndex = i; break; }
+          }
+        }
+        qualChips.forEach(function (c) {
+          c.classList.remove('is-on');
+          c.removeAttribute('aria-current');
+        });
+        chip.classList.add('is-on');
+        chip.setAttribute('aria-current', 'true');
+        track('hero_qualifier', chip.textContent.trim());
+        var target = document.querySelector(chip.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  }
 
   var form = document.getElementById('bdaForm');
   if (!form) return;
