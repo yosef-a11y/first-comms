@@ -144,9 +144,14 @@ strong{font-weight:700;color:var(--brown-700)}
 /* Hero photo block. On phones it sits below the copy to break up a long run of
    text; on desktop it fills the empty lower-left of the copy column. The two
    sizes are separate files behind a media query, so each viewport downloads
-   only its own (55KB on phones rather than the 177KB desktop crop). */
-.hero-figure{display:block;margin:26px 0 0;height:168px;
-  background:url("images/hero-mobile.jpg") no-repeat center 38%;background-size:cover}
+   only its own (65KB on phones rather than the 173KB desktop crop).
+   The 2/1 aspect-ratio is the whole point: the photo is a 1.93 image, so a 2:1
+   frame crops about 3% off it. The earlier fixed 168/180px heights made the box
+   3.1:1, which threw away 38% of the height — precisely the band the
+   firefighters' heads were in. Ratio, not a pixel height, so it stays right at
+   every column width instead of drifting as the layout flexes. */
+.hero-figure{display:block;margin:26px 0 0;aspect-ratio:2/1;
+  background:url("images/hero-mobile.jpg") no-repeat center 45%;background-size:cover}
 @media(min-width:1000px){
   /* stretch lets the copy column fill the row so the photo can pin to its
      bottom; the form card opts back out so it keeps its natural height
@@ -159,11 +164,7 @@ strong{font-weight:700;color:var(--brown-700)}
   .hero-copy .badge-row{margin-bottom:36px}
   /* margin-top:auto pins the photo to the bottom of the copy column, so its
      lower edge lines up with the form card's instead of floating mid-column. */
-  /* 180px keeps the hero from growing so tall that nothing below it is visible:
-     the photo's top edge now sits just inside the fold on a laptop, which doubles
-     as the cue that there is more page under it. */
-  .hero-figure{margin:0;margin-top:auto;height:180px;
-    background-image:url("images/hero.jpg")}
+  .hero-figure{margin:0;margin-top:auto;background-image:url("images/hero.jpg")}
 }
 
 /* ---------- Form ---------- */
