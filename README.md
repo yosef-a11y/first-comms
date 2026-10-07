@@ -3,8 +3,9 @@
 Landing page for FirstComms — emergency responder radio coverage (ERRC / BDA)
 testing, design, installation and yearly testing.
 
-Static, no build step. Three self-contained HTML files; CSS and JS are inlined,
-there are no webfonts and no images, so the whole page is one request.
+Static, no build step. Three self-contained HTML files; CSS and JS are inlined
+and there are no webfonts, so the markup is a single request. Photographs are the
+only other assets, and each viewport downloads only the crop it needs.
 
 | File | Purpose |
 | --- | --- |
@@ -12,6 +13,10 @@ there are no webfonts and no images, so the whole page is one request.
 | `thank-you.html` | Post-submission page — fires the `generate_lead` conversion |
 | `privacy.html` | Privacy policy (required for lead-gen ads) |
 | `CNAME` | Tells GitHub Pages the custom domain |
+| `robots.txt` | Crawl rules; points at the sitemap. AI crawlers allowed on purpose |
+| `sitemap.xml` | One URL — the homepage. The other two pages are `noindex` |
+| `llms.txt` | Plain-text brief for AI answer engines |
+| `images/og-image.png` | 1200×630 share card. Regenerate if the H1 changes |
 
 ## Deploying
 
@@ -23,6 +28,28 @@ Push to `main`. GitHub Pages serves it. That's the whole process.
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+## Search Console
+
+**Not connected yet.** Pick whichever of these is least painful:
+
+1. **Google Analytics (easiest).** Search Console can verify through the GA4 tag
+   already on the page. In Search Console choose **Add property → URL prefix →
+   `https://first-comms.com/`**, then pick **Google Analytics** as the
+   verification method. It works as long as you have Edit rights on property
+   `G-6BRYRS4HPE` and you are signed in to the same Google account. Nothing to
+   change on the site.
+2. **DNS record.** Add the TXT record Search Console gives you at GoDaddy, same
+   place the A records live. Verifies the whole domain including subdomains.
+3. **HTML tag.** `index.html` has a commented-out `google-site-verification`
+   meta tag in `<head>`. Uncomment it, paste the token in, push.
+
+Once verified, submit `https://first-comms.com/sitemap.xml` under **Sitemaps**.
+
+A brand-new domain takes weeks to show data, and this is a one-page site — the
+organic ceiling is low until there is more than one page to rank. Search Console
+is worth connecting mainly to confirm the page is indexed and to see which
+queries it surfaces for, which is useful input for the ad keywords.
 
 ## Still to do
 
@@ -38,6 +65,8 @@ python3 -m http.server 8000
       that is a stronger proof section. If they are stock or generated, leave the
       wording as it is — claiming them as your projects would not be true.
       `images/install-4.jpg` is a spare, currently unused.
+- [ ] **Search Console** — not connected. See the section above; the Google
+      Analytics method needs nothing changed on the site.
 - [ ] **Reviews** — the section is built and styled but deliberately left
       commented out rather than filled with invented testimonials. It needs three
       real quotes: the customer's own words, their name, and the month.

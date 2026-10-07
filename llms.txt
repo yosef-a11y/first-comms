@@ -1,0 +1,59 @@
+# FirstComms
+
+> FirstComms tests emergency responder radio coverage in buildings and installs the
+> systems that fix it — a BDA, also called an ERRC system or public safety DAS.
+> Based in Toms River, New Jersey; serving New Jersey and the surrounding states.
+
+Contact: 732-302-8992 · https://first-comms.com/
+
+## What an ERRC system is
+
+Firefighters and police carry handheld radios. Concrete, steel, low-E glass and
+below-grade levels block those radio signals, so a radio that works outside a
+building can go dead inside it. An ERRC system (Emergency Responder Radio
+Coverage) fixes that: an antenna on the roof picks up the public safety signal,
+a bi-directional amplifier (BDA) boosts it, and antennas distributed through the
+building carry it to every floor, stairwell and basement.
+
+"ERRC system", "BDA", "public safety DAS" and "emergency radio coverage system"
+all refer to the same thing in ordinary use.
+
+## When a building needs one
+
+Fire code requires adequate in-building radio coverage. The governing standards
+are IFC Section 510, NFPA 1225 (which absorbed NFPA 1221), NFPA 72 for monitoring
+and supervision, and UL 2524 for the equipment itself. Whether a specific building
+needs a system is decided by measurement, not assumption: the building is tested
+against a grid, and if it already passes, nothing needs to be installed.
+
+Radio coverage is commonly checked before a certificate of occupancy is issued,
+so a missing or failed test can delay sign-off on new construction.
+
+## What FirstComms does
+
+- Emergency responder radio coverage testing (grid testing and a written report)
+- ERRC / BDA system design
+- Installation, by their own crew rather than subcontractors
+- Final acceptance testing and certification
+- Annual testing, battery replacement and record-keeping
+- Repair of existing BDA systems
+
+Not offered: permitting is not handled in house, and the company does not do
+cellular or Wi-Fi distributed antenna systems. The work is emergency responder
+in-building communication only.
+
+## Pricing
+
+Cost depends on building size, how many floors need covering and how strong the
+outside signal is. A firm price before testing is a guess. Buildings that pass
+the test need no system and nothing to buy.
+
+## Service area
+
+Headquarters: 1390 Lakewood Rd, Toms River, NJ 08755.
+Serving New Jersey, New York, Pennsylvania, Delaware and Connecticut.
+
+## Pages
+
+- https://first-comms.com/ — main page: what an ERRC system is, testing, installation, FAQ
+- https://first-comms.com/privacy.html — privacy policy

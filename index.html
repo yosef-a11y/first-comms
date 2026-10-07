@@ -4,18 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Emergency Radio Coverage for Buildings | Testing &amp; BDA Installation | FirstComms</title>
-<meta name="description" content="We test whether firefighters can use their radios inside your building, and install the system that fixes it when they can't. BDA / ERRC systems built to IFC 510 and NFPA 1225.">
+<title>ERRC &amp; BDA Systems in New Jersey | Radio Coverage Testing | FirstComms</title>
+<meta name="description" content="What an ERRC system is, whether your building needs one, and what it takes to pass. We test emergency responder radio coverage across New Jersey and install the BDA when it's needed. IFC 510 and NFPA 1225.">
 <link rel="canonical" href="https://first-comms.com/">
 <meta name="theme-color" content="#240D07">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="format-detection" content="telephone=yes">
 
+<!-- Lets Google and AI Overviews quote the page at length rather than clipping
+     it to a two-line snippet. Worth having on a page whose job is explaining. -->
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="FirstComms">
-<meta property="og:title" content="Emergency Radio Coverage for Buildings | Testing &amp; BDA Installation">
-<meta property="og:description" content="We test whether firefighters can use their radios inside your building, and install the system that fixes it when they can't.">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="ERRC &amp; BDA Systems in New Jersey | FirstComms">
+<meta property="og:description" content="What an ERRC system is, whether your building needs one, and what it takes to pass. Testing and installation across New Jersey.">
 <meta property="og:url" content="https://first-comms.com/">
+<meta property="og:image" content="https://first-comms.com/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FirstComms — ERRC and BDA systems in New Jersey">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ERRC &amp; BDA Systems in New Jersey | FirstComms">
+<meta name="twitter:description" content="What an ERRC system is, whether your building needs one, and what it takes to pass.">
+<meta name="twitter:image" content="https://first-comms.com/images/og-image.png">
+
+<!-- Google Search Console verification. Replace the content value with the token
+     from Search Console > Add property > URL prefix > HTML tag, then push. If the
+     property is verified by another method (Google Analytics or a DNS record),
+     this tag is not needed and can be deleted. -->
+<!-- <meta name="google-site-verification" content="REPLACE_WITH_TOKEN"> -->
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20200%20200%27%3E%3Crect%20width%3D%27200%27%20height%3D%27200%27%20fill%3D%27%23240D07%27%2F%3E%3Cpath%20d%3D%27M68%2040%20L158%2040%20L158%2054%20L144%2068%20L68%2068%20L68%20144%20L54%20158%20L40%20158%20L40%2068%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M100%2078%20L152%2078%20L152%2090%20L140%20102%20L100%20102%20L100%20140%20L88%20152%20L76%20152%20L76%20102%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3Cpath%20d%3D%27M130%20118%20L152%20118%20L152%20140%20L140%20152%20L118%20152%20L118%20130%20Z%27%20fill%3D%27%23FA5019%27%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
 
@@ -361,11 +380,13 @@ strong{font-weight:700;color:var(--brown-700)}
   "@graph": [
     {
       "@type": "ProfessionalService",
-      "@id": "https://www.firstcomms.net/#business",
+      "@id": "https://first-comms.com/#business",
       "name": "FirstComms",
       "description": "Testing and installation of emergency responder radio coverage systems (BDA / ERRC) for buildings, plus yearly testing and repairs.",
-      "url": "https://www.firstcomms.net/",
+      "url": "https://first-comms.com/",
       "telephone": "+1-732-302-8992",
+      "image": "https://first-comms.com/images/og-image.png",
+      "priceRange": "$$",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "1390 Lakewood Rd",
@@ -375,13 +396,41 @@ strong{font-weight:700;color:var(--brown-700)}
         "addressCountry": "US"
       },
       "areaServed": ["New Jersey", "New York", "Pennsylvania", "Delaware", "Connecticut"],
-      "knowsAbout": ["Emergency Responder Radio Communication Systems", "Bi-Directional Amplifiers", "Public Safety DAS", "IFC Section 510", "NFPA 1225"]
+      "knowsAbout": ["Emergency Responder Radio Communication Systems", "Bi-Directional Amplifiers", "Public Safety DAS", "IFC Section 510", "NFPA 1225", "NFPA 72", "UL 2524"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "ERRC and BDA services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Emergency responder radio coverage testing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BDA / ERRC system design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "BDA / ERRC system installation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Annual ERRC system testing and certification" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Existing BDA system repair" } }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://first-comms.com/#website",
+      "url": "https://first-comms.com/",
+      "name": "FirstComms",
+      "publisher": { "@id": "https://first-comms.com/#business" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://first-comms.com/#webpage",
+      "url": "https://first-comms.com/",
+      "name": "ERRC & BDA Systems in New Jersey | FirstComms",
+      "isPartOf": { "@id": "https://first-comms.com/#website" },
+      "about": { "@id": "https://first-comms.com/#business" },
+      "inLanguage": "en-US"
     },
     {
       "@type": "Service",
       "name": "Public Safety BDA / ERRC Systems",
       "serviceType": "Emergency responder radio coverage testing, design, installation and annual testing",
-      "provider": { "@id": "https://www.firstcomms.net/#business" },
+      "provider": { "@id": "https://first-comms.com/#business" },
       "areaServed": { "@type": "State", "name": "New Jersey" }
     },
     {
@@ -513,12 +562,13 @@ strong{font-weight:700;color:var(--brown-700)}
 
     <div class="container hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">ERRC &amp; BDA Systems</span>
-        <h1 id="hero-headline">Firefighters need their radios to work inside your building. <span class="hl">We make sure they do.</span></h1>
+        <span class="eyebrow">ERRC &amp; BDA Systems &middot; New Jersey</span>
+        <h1 id="hero-headline">ERRC systems and BDAs, <span class="hl">explained</span> by the people who install them.</h1>
 
         <p class="hero-sub">
-          Fire code requires it. Concrete and steel block the signal. We test your building and install
-          the system that fixes it &mdash; a <strong>BDA</strong>, also called an <strong>ERRC system</strong>.
+          It&rsquo;s the equipment that keeps firefighters&rsquo; radios working inside your building, and fire code
+          requires it wherever concrete and steel block the signal. Tell us about your building and we&rsquo;ll
+          tell you straight whether yours needs one.
         </p>
 
         <!-- People arrive from an ad with one specific trigger already in mind.
@@ -538,7 +588,7 @@ strong{font-weight:700;color:var(--brown-700)}
 
         <ul class="hero-points">
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
-            <span><strong>Testing</strong> that tells you exactly where you stand</span></li>
+            <span><strong>Testing</strong> that tells you whether you even need a system</span></li>
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
             <span><strong>Design and installation</strong> by our own crew</span></li>
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>

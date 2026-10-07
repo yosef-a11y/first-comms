@@ -1,0 +1,26 @@
+# FirstComms — https://first-comms.com/
+# Everything is public. The only pages kept out of search are the thank-you and
+# privacy pages, which carry their own noindex tags rather than being blocked
+# here — a Disallow would stop crawlers reading the tag at all.
+
+User-agent: *
+Allow: /
+
+# AI crawlers are allowed on purpose. This page explains what an ERRC system is,
+# so being quotable by AI answers is the point, not a leak.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://first-comms.com/sitemap.xml
