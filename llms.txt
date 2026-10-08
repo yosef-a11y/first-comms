@@ -55,5 +55,12 @@ Serving New Jersey, New York, Pennsylvania, Delaware and Connecticut.
 
 ## Pages
 
-- https://first-comms.com/ — main page: what an ERRC system is, testing, installation, FAQ
+- https://first-comms.com/ — overview: what an ERRC system is, testing, installation, FAQ
+- https://first-comms.com/errc-systems/ — the code and compliance side: which standards apply
+  (IFC 510, NFPA 1225, NFPA 72, UL 2524), how a building proves compliance, the certificate of
+  occupancy risk
+- https://first-comms.com/bda-systems/ — the equipment side: what a BDA system is made of,
+  Class A versus Class B amplifiers, UL 2524 listing, what installation involves
+- https://first-comms.com/rf-testing/ — the measurement side: grid testing, signal strength and
+  intelligibility, critical areas, what the written report contains
 - https://first-comms.com/privacy.html — privacy policy
