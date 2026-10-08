@@ -112,6 +112,28 @@ strong{font-weight:700;color:var(--brown-700)}
 .btn:focus-visible{outline:none;background:var(--brown-900)}
 .btn-sm{padding:11px 18px;font-size:.72rem;--cut:9px}
 .btn-block{width:100%}
+/* Outline variant. Square on purpose: the bevel clip-path leaves the two
+   diagonal corners unstroked, so a bevelled outline button reads as a broken
+   frame. Filled buttons keep the bevel. */
+.btn-line{background:transparent;color:var(--brown-700);border:1px solid var(--brown-400);clip-path:none}
+.btn-line:hover{background:var(--brown-900);border-color:var(--brown-900);color:#fff}
+.btn-line:focus-visible{outline:2px solid var(--orange-btn);outline-offset:2px;
+  background:transparent;color:var(--brown-700)}
+
+/* Mid-page call to action. The page runs eleven sections and roughly two
+   thousand words, and until these were added the only CTA in the body was the
+   submit button inside the hero form — the sticky call bar is phone-only
+   (display:none above 860px). A desktop visitor who read to the end therefore
+   had no way to act without scrolling back to the top. Most of the ad traffic
+   is desktop, so that was the single biggest gap in the page. */
+.cta-band{background:var(--cream-100);border-top:1px solid var(--cream-300);
+  border-bottom:1px solid var(--cream-300);padding:clamp(30px,3.6vw,44px) 0}
+.cta-inner{display:grid;gap:20px;align-items:center}
+@media(min-width:860px){.cta-inner{grid-template-columns:1fr auto;gap:44px}}
+.cta-h{font-family:var(--mono);font-weight:700;font-size:clamp(1.12rem,1.9vw,1.42rem);
+  line-height:1.25;color:var(--brown-900)}
+.cta-band p{margin-top:9px;font-size:.97rem;line-height:1.55;max-width:54ch}
+.cta-actions{display:flex;flex-wrap:wrap;gap:10px}
 
 /* ---------- Header ---------- */
 .header{position:sticky;top:0;z-index:100;background:var(--brown-900);border-bottom:2px solid var(--orange)}
@@ -327,6 +349,7 @@ strong{font-weight:700;color:var(--brown-700)}
   line-height:1.25;font-size:clamp(1.35rem,3.2vw,2.3rem);max-width:22ch}
 .statement em{font-style:normal;color:var(--orange-lift)}
 .statement span{display:block;margin-top:16px;font-size:.98rem;line-height:1.6;color:var(--brown-200);max-width:52ch}
+.statement-cta{margin-top:26px}
 
 /* ---------- Project gallery (enable with the slot in <main>) ---------- */
 .shots{display:grid;gap:16px}
@@ -748,6 +771,7 @@ strong{font-weight:700;color:var(--brown-700)}
       <p class="reveal">No radio coverage, <em>no certificate of occupancy</em>.</p>
       <span class="reveal">It is one of the few things that can hold a finished building empty. We test before your
         inspection is booked, and fix whatever the test finds.</span>
+      <a class="btn statement-cta" href="#lead-form">Ask about your building</a>
     </div>
   </section>
 
@@ -848,6 +872,19 @@ strong{font-weight:700;color:var(--brown-700)}
   </section>
 
   <!-- ================= WHAT WE DO ================= -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <p class="cta-h">Find out where your building actually stands.</p>
+        <p>A test gives you a straight answer and a written report. If the building already passes, you install nothing.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" href="#lead-form">Ask about your building</a>
+        <a class="btn btn-line phone-link" href="tel:+17323028992">732-302-8992</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="services">
     <div class="container">
       <div class="section-head center reveal">
@@ -1011,6 +1048,19 @@ strong{font-weight:700;color:var(--brown-700)}
   ================= END REVIEWS ================= -->
 
   <!-- ================= EQUIPMENT ================= -->
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <p class="cta-h">Ready to get this off your desk?</p>
+        <p>Tell us the building and what has prompted this. We&rsquo;ll tell you what&rsquo;s required and what it costs to find out.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" href="#lead-form">Ask about your building</a>
+        <a class="btn btn-line phone-link" href="tel:+17323028992">732-302-8992</a>
+      </div>
+    </div>
+  </section>
+
   <section class="section" id="gallery">
     <div class="container">
       <div class="section-head center reveal">
@@ -1108,6 +1158,19 @@ strong{font-weight:700;color:var(--brown-700)}
       </div>
     </div>
   </section>
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <div>
+        <p class="cta-h">Still have a question?</p>
+        <p>Ask it directly. We answer these every week, and there is no obligation attached to asking.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn" href="#lead-form">Ask about your building</a>
+        <a class="btn btn-line phone-link" href="tel:+17323028992">732-302-8992</a>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
