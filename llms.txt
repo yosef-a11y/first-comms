@@ -29,6 +29,17 @@ against a grid, and if it already passes, nothing needs to be installed.
 Radio coverage is commonly checked before a certificate of occupancy is issued,
 so a missing or failed test can delay sign-off on new construction.
 
+This is not a new-construction-only requirement, which is a common
+misunderstanding. The obligation attaches to the building, not its age. Existing
+and occupied buildings are caught by it during renovations, on a change of use,
+or when a fire official tests the building and it fails.
+
+A poorly specified or badly commissioned amplifier can raise the noise floor of
+the public safety network it is meant to support. This is the practical reason
+jurisdictions scrutinise how these systems are specified, and the reason a
+channelised (Class A) amplifier is preferred over a broadband (Class B) one
+where the choice is available.
+
 ## What FirstComms does
 
 - Emergency responder radio coverage testing (grid testing and a written report)

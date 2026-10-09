@@ -17,6 +17,9 @@ only other assets, and each viewport downloads only the crop it needs.
 | `sitemap.xml` | One URL — the homepage. The other two pages are `noindex` |
 | `llms.txt` | Plain-text brief for AI answer engines |
 | `images/og-image.png` | 1200×630 share card. Regenerate if the H1 changes |
+| `styles.css` | All styling, shared by every page |
+| `errc-systems/`, `bda-systems/`, `rf-testing/` | Keyword pages, one per ad group |
+| `build/` | **Generates the three keyword pages. Edit these, not the HTML.** |
 
 ## Deploying
 
@@ -28,6 +31,38 @@ Push to `main`. GitHub Pages serves it. That's the whole process.
 python3 -m http.server 8000
 # then open http://localhost:8000
 ```
+
+## The keyword pages are generated — do not hand-edit them
+
+`errc-systems/index.html`, `bda-systems/index.html` and `rf-testing/index.html` are
+written by `build/build.py`. It lifts the header, footer, form, icon sprite and
+tracking tags straight out of `index.html`, so the shell cannot drift out of sync
+with the homepage — change the phone number or the form once and it propagates.
+
+```bash
+python3 build/build.py     # rewrites all three pages
+```
+
+Page copy and FAQs live in `build/build.py`. Anything you change directly in the
+generated HTML is lost the next time it runs.
+
+## Questions only FirstComms can answer
+
+Content that is being held back because it would mean inventing a claim about
+what the company does. Ask Dan, then the copy can be written:
+
+- [ ] **FCC licensee consent.** Rebroadcasting a public safety frequency
+      generally needs the licensee's permission. Does FirstComms handle that, or
+      is it the building owner's job? This is a real buyer anxiety and nobody
+      explains it — whoever does looks like the expert.
+- [ ] **Interference liability.** If a system degrades the public safety network,
+      who carries that? Worth stating plainly if the answer is favourable.
+- [ ] **Warranty / guarantee.** What is actually promised if a system fails its
+      final inspection? The site implies confidence but states no terms.
+- [ ] **"Our own architect stamps the plans"** (in the `#why` section). For an
+      RF/electrical system this is normally a professional engineer's stamp, not
+      an architect's. Confirm the wording is right — it is a precise professional
+      claim and worth getting exactly correct.
 
 ## Search Console
 
