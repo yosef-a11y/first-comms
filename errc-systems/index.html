@@ -675,14 +675,26 @@
   var source = document.getElementById('pageSource');
   if (source) {
     source.value = [
+      'page=' + window.location.pathname,
       kw ? 'kw=' + kw : '',
       params.get('utm_campaign') ? 'campaign=' + params.get('utm_campaign') : '',
       params.get('utm_term') ? 'term=' + params.get('utm_term') : ''
     ].filter(Boolean).join(' | ').slice(0, 200) || 'direct';
   }
 
+  /* Root-relative on purpose. 'thank-you.html' resolves against the CURRENT
+     directory, so on /bda-systems/ it pointed at /bda-systems/thank-you.html —
+     a 404, which also meant generate_lead never fired and those pages recorded
+     no conversions at all. The leading slash pins it to the one real page.
+     This override exists so a local or staging preview does not bounce the
+     visitor to production; it keeps that behaviour. The source page rides along
+     as ?from= so the conversion can be attributed to the page that produced it. */
   var redirect = form.querySelector('input[name="redirect"]');
-  if (redirect) redirect.value = new URL('thank-you.html', window.location.href).href;
+  if (redirect) {
+    var ty = new URL('/thank-you.html', window.location.href);
+    ty.searchParams.set('from', window.location.pathname);
+    redirect.value = ty.href;
+  }
 
   form.addEventListener('submit', function (e) {
     if (!form.checkValidity()) {

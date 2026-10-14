@@ -50,7 +50,13 @@
   gtag('config', 'AW-17861173083');
   // The real conversion. Mark generate_lead as a key event in GA4, and import
   // it (or the Google Ads snippet) as the campaign's primary conversion action.
-  gtag('event', 'generate_lead', { event_category: 'Lead', event_label: 'BDA Landing Page' });
+  // ?from= carries the page that produced the lead, so conversions can be told
+  // apart per keyword page instead of all collapsing into one label.
+  // Constrained to a path shape: the value comes off the URL, so without this a
+  // crafted link could put arbitrary text in the conversion reports.
+  var rawFrom = new URLSearchParams(location.search).get('from') || '/';
+  var leadFrom = /^\/[a-z0-9\-\/]*$/i.test(rawFrom) ? rawFrom.slice(0, 60) : '/';
+  gtag('event', 'generate_lead', { event_category: 'Lead', event_label: leadFrom });
 </script>
 
 <!-- WhatConverts — lead tracking and dynamic number insertion.
