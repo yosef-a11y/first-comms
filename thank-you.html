@@ -50,12 +50,17 @@
   gtag('config', 'AW-17861173083');
   // The real conversion. Mark generate_lead as a key event in GA4, and import
   // it (or the Google Ads snippet) as the campaign's primary conversion action.
-  // ?from= carries the page that produced the lead, so conversions can be told
-  // apart per keyword page instead of all collapsing into one label.
-  // Constrained to a path shape: the value comes off the URL, so without this a
-  // crafted link could put arbitrary text in the conversion reports.
-  var rawFrom = new URLSearchParams(location.search).get('from') || '/';
-  var leadFrom = /^\/[a-z0-9\-\/]*$/i.test(rawFrom) ? rawFrom.slice(0, 60) : '/';
+  // Which page produced the lead, written to localStorage by the form page just
+  // before it posted. Read from storage rather than the URL so the redirect stays
+  // a plain address with nothing in it that could stop it resolving. Still
+  // validated: storage is same-origin but not a reason to skip checking shape.
+  var leadFrom = '/';
+  try {
+    var rec = JSON.parse(localStorage.getItem('fc_lead_from') || 'null');
+    if (rec && rec.p && Date.now() - rec.t < 30 * 60 * 1000 &&
+        /^\/[a-z0-9\-\/]*$/i.test(rec.p)) leadFrom = rec.p.slice(0, 60);
+    localStorage.removeItem('fc_lead_from');
+  } catch (e) {}
   gtag('event', 'generate_lead', { event_category: 'Lead', event_label: leadFrom });
 </script>
 

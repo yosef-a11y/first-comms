@@ -677,12 +677,22 @@
      This override exists so a local or staging preview does not bounce the
      visitor to production; it keeps that behaviour. The source page rides along
      as ?from= so the conversion can be attributed to the page that produced it. */
+  /* Root-relative on purpose. 'thank-you.html' resolves against the CURRENT
+     directory, so on /bda-systems/ it pointed at /bda-systems/thank-you.html —
+     a 404, which also meant generate_lead never fired. The leading slash pins it
+     to the one real page. This override exists so a local or staging preview does
+     not bounce the visitor to production; it keeps that behaviour.
+     Deliberately NO query string: the redirect URL is handed to a third party,
+     and the plain form is the one shape known to work. The source page travels
+     in localStorage instead, which cannot affect whether the redirect resolves. */
   var redirect = form.querySelector('input[name="redirect"]');
-  if (redirect) {
-    var ty = new URL('/thank-you.html', window.location.href);
-    ty.searchParams.set('from', window.location.pathname);
-    redirect.value = ty.href;
-  }
+  if (redirect) redirect.value = new URL('/thank-you.html', window.location.href).href;
+
+  try {
+    localStorage.setItem('fc_lead_from', JSON.stringify({
+      p: window.location.pathname, t: Date.now()
+    }));
+  } catch (e) {}
 
   form.addEventListener('submit', function (e) {
     if (!form.checkValidity()) {
