@@ -1044,15 +1044,86 @@
   var redirect = form.querySelector('input[name="redirect"]');
   if (redirect) redirect.value = new URL('thank-you.html', window.location.href).href;
 
+  /* Submitted in place rather than by navigation. The hidden redirect field is
+     still there and still points at this page's own thank-you page, but that is
+     now only the no-JS path. A redirect is performed by a third party after the
+     POST, which makes it a step in the critical path that can fail without
+     either end being able to see why — and it did fail, repeatedly, while the
+     destination file itself loaded fine. Confirming in place removes the step.
+     It also means a failed submission can say so, instead of silently landing
+     the visitor somewhere unexpected. */
+  function leadConverted() {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'generate_lead', {
+        event_category: 'Lead', event_label: window.location.pathname
+      });
+    }
+  }
+
+  function showSuccess() {
+    var card = form.closest('.form-card') || form.parentNode;
+    var panel = document.createElement('div');
+    panel.setAttribute('role', 'status');
+    panel.className = 'form-done';
+    panel.innerHTML =
+      '<h2>Got it &mdash; your request is in</h2>' +
+      '<p>An engineer will review the building details and come back to you within ' +
+      'one business day.</p>' +
+      '<p class="form-done-rush">In a rush &mdash; failed inspection, or a CO on the ' +
+      'line? Call <a class="phone-link" href="tel:+17323028992">732-302-8992</a> and ' +
+      'say so. We move those first.</p>';
+    card.innerHTML = '';
+    card.appendChild(panel);
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    leadConverted();
+  }
+
+  function showFailure(detail) {
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = false; btn.textContent = 'Speak With An Expert'; }
+    var old = form.querySelector('.form-notice');
+    if (old) old.parentNode.removeChild(old);
+    var note = document.createElement('p');
+    note.className = 'form-notice';
+    note.setAttribute('role', 'alert');
+    note.innerHTML = 'That did not send. Please call ' +
+      '<a class="phone-link" href="tel:+17323028992">732-302-8992</a> and we will ' +
+      'take the details over the phone.';
+    form.insertBefore(note, form.firstElementChild);
+    if (detail) console.error('[FirstComms LP] Submission failed:', detail);
+  }
+
   form.addEventListener('submit', function (e) {
     if (!form.checkValidity()) {
       e.preventDefault();
       form.reportValidity();
       return;
     }
-    track('form_submit', 'BDA Landing Page');
+
+    track('form_submit', window.location.pathname);
     var btn = form.querySelector('button[type="submit"]');
     if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+
+    /* Without fetch or FormData, fall through to the ordinary form POST and let
+       the redirect field do its job. */
+    if (!window.fetch || !window.FormData) return;
+    e.preventDefault();
+
+    fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(function (res) {
+        return res.json().catch(function () {
+          return { success: false, message: 'Unreadable response (HTTP ' + res.status + ')' };
+        });
+      })
+      .then(function (data) {
+        if (data && data.success) showSuccess();
+        else showFailure((data && data.message) || 'rejected');
+      })
+      .catch(function (err) { showFailure(err && err.message); });
   });
 
   var year = document.getElementById('year');

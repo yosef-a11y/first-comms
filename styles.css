@@ -367,3 +367,9 @@ strong{font-weight:700;color:var(--brown-700)}
 .related strong{display:block;font-family:var(--mono);font-size:.95rem;
   color:var(--brown-900);margin-bottom:5px}
 .related span{display:block;font-size:.9rem;line-height:1.5;color:var(--brown-400)}
+
+/* Confirmation shown in place of the form after a successful submission. */
+.form-done h2{font-size:1.15rem;color:var(--brown-900)}
+.form-done p{margin-top:10px;font-size:.95rem;line-height:1.6;color:var(--brown-400)}
+.form-done p a{color:var(--orange-btn);font-weight:700}
+.form-done-rush{padding-top:12px;border-top:1px solid var(--cream-300)}
