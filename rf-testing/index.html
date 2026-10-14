@@ -234,6 +234,13 @@
           <span class="badge">UL 2524</span>
           <span class="badge">14+ Years</span>
         </div>
+
+        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
+             against the document, so a relative one would look inside this
+             page's own directory. Two files so a phone never pulls the desktop
+             crop. -->
+        <div class="hero-figure" role="img" aria-label="Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor."
+             style="--fig-sm:url('/images/fig-rf-sm.jpg');--fig-lg:url('/images/fig-rf.jpg')"></div>
       </div>
 
       <div class="form-card" id="lead-form">

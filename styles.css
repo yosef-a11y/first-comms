@@ -150,8 +150,15 @@ strong{font-weight:700;color:var(--brown-700)}
    3.1:1, which threw away 38% of the height — precisely the band the
    firefighters' heads were in. Ratio, not a pixel height, so it stays right at
    every column width instead of drifting as the layout flexes. */
+/* The image is a custom property so each landing page can set its own without a
+   class per page. The fallbacks are the homepage's, so index.html sets nothing.
+   Sub-pages must use absolute /images/... paths: url() in an inline style
+   resolves against the document, and on /bda-systems/ a relative path would
+   look for /bda-systems/images/. (In this file it resolves against the
+   stylesheet, which sits at the root, so relative is correct here.) */
 .hero-figure{display:block;margin:26px 0 0;aspect-ratio:2/1;
-  background:url("images/hero-mobile.jpg") no-repeat center 45%;background-size:cover}
+  background:var(--fig-sm,url("images/hero-mobile.jpg")) no-repeat center 45%;
+  background-size:cover}
 @media(min-width:1000px){
   /* stretch lets the copy column fill the row so the photo can pin to its
      bottom; the form card opts back out so it keeps its natural height
@@ -164,7 +171,7 @@ strong{font-weight:700;color:var(--brown-700)}
   .hero-copy .badge-row{margin-bottom:36px}
   /* margin-top:auto pins the photo to the bottom of the copy column, so its
      lower edge lines up with the form card's instead of floating mid-column. */
-  .hero-figure{margin:0;margin-top:auto;background-image:url("images/hero.jpg")}
+  .hero-figure{margin:0;margin-top:auto;background-image:var(--fig-lg,url("images/hero.jpg"))}
 }
 
 /* ---------- Form ---------- */

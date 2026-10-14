@@ -234,6 +234,13 @@
           <span class="badge">UL 2524</span>
           <span class="badge">14+ Years</span>
         </div>
+
+        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
+             against the document, so a relative one would look inside this
+             page's own directory. Two files so a phone never pulls the desktop
+             crop. -->
+        <div class="hero-figure" role="img" aria-label="Amplifier, battery backup cabinet and system records box installed on the concrete core wall of a high-rise lobby."
+             style="--fig-sm:url('/images/fig-errc-sm.jpg');--fig-lg:url('/images/fig-errc.jpg')"></div>
       </div>
 
       <div class="form-card" id="lead-form">

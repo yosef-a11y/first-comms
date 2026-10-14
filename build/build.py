@@ -5,7 +5,7 @@ import shell
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BIZ = 'https://first-comms.com/#business'
 
-def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name):
+def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_alt):
     url = f'https://first-comms.com/{slug}/'
     faq_ld = [{"@type":"Question","name":q,
                "acceptedAnswer":{"@type":"Answer","text":a}} for q, a in faqs]
@@ -108,6 +108,13 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name):
           <span class="badge">UL 2524</span>
           <span class="badge">14+ Years</span>
         </div>
+
+        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
+             against the document, so a relative one would look inside this
+             page's own directory. Two files so a phone never pulls the desktop
+             crop. -->
+        <div class="hero-figure" role="img" aria-label="{fig_alt}"
+             style="--fig-sm:url('/images/{fig}-sm.jpg');--fig-lg:url('/images/{fig}.jpg')"></div>
       </div>
 
 {form_html}
@@ -320,7 +327,8 @@ rf_body = (
 )
 
 PAGES = [
- dict(slug='errc-systems',
+ dict(slug='errc-systems', fig='fig-errc',
+   fig_alt='Amplifier, battery backup cabinet and system records box installed on the concrete core wall of a high-rise lobby.',
    title='ERRC Systems in New Jersey | Requirements &amp; Compliance | FirstComms',
    desc='What an ERRC system is, which codes apply, and how a building proves compliance. Emergency responder radio coverage testing and installation across New Jersey.',
    h1='ERRC systems: <span class="hl">what the code asks for</span>, and what that means for your building.',
@@ -348,7 +356,8 @@ PAGES = [
       'when a fire official tests the building and it fails. If you own an occupied building that has never been tested, you '
       'do not currently know whether it passes.'),
    ]),
- dict(slug='bda-systems',
+ dict(slug='bda-systems', fig='fig-bda',
+   fig_alt='Fire alarm panel, amplifier enclosure and battery backup cabinet mounted together on an equipment room wall.',
    title='BDA Systems &amp; Installation in New Jersey | FirstComms',
    desc='What a BDA system is made of, how Class A and Class B differ, and what installation involves. Bi-directional amplifier design and installation across New Jersey.',
    h1='BDA systems: <span class="hl">the equipment</span> that fixes in-building radio coverage.',
@@ -379,7 +388,8 @@ PAGES = [
       'areas we can be in, at what hours, and how much notice tenants need. It is worth raising at the survey, because it '
       'changes the sequence of the work more than it changes the price.'),
    ]),
- dict(slug='rf-testing',
+ dict(slug='rf-testing', fig='fig-rf',
+   fig_alt='Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor.',
    title='RF &amp; Radio Coverage Testing in New Jersey | Grid Testing | FirstComms',
    desc='How radio coverage testing works: grid testing, signal strength, intelligibility and what the report contains. Emergency responder radio coverage testing across New Jersey.',
    h1='Radio coverage testing: <span class="hl">a measured answer</span> on whether your building passes.',
@@ -407,7 +417,8 @@ PAGES = [
 
 for p in PAGES:
     html = page(p['slug'], p['title'], p['desc'], p['h1'], p['lede'],
-                p['crumb'], p['body'], p['faqs'], p['service_name'])
+                p['crumb'], p['body'], p['faqs'], p['service_name'],
+                p['fig'], p['fig_alt'])
     d = os.path.join(OUT, p['slug']); os.makedirs(d, exist_ok=True)
     open(os.path.join(d, 'index.html'), 'w').write(html)
 
