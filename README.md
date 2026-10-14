@@ -109,16 +109,34 @@ queries it surfaces for, which is useful input for the ad keywords.
       Two things still need doing inside GA4 itself: mark `generate_lead` as a
       key event (Admin > Events), or form submissions will not count as
       conversions; and link Google Ads to this property (Admin > Product links).
-- [ ] **Form recipient — ONE ACTION OUTSTANDING.** Leads are meant to go to
-      dan@cellsignalsolutions.com. In Web3Forms the recipient is the address the
-      access key was issued to; it cannot be set from the markup. So:
-      1. Go to web3forms.com and enter `dan@cellsignalsolutions.com`.
-      2. Web3Forms emails the access key to that address.
-      3. Put it in `index.html` in place of the current `access_key` value.
-      Until that happens the form still works, but submissions go to
-      yosef@steadygrowthmarketing.com — the key is left in place deliberately so
-      no lead is dropped in the meantime. Send a live test afterwards and confirm
-      Dan receives it.
+- [ ] **Form recipient — ONE ACTION OUTSTANDING.** Leads are meant to reach
+      dan@cellsignalsolutions.com. In Web3Forms the recipient is whichever address
+      the access key was issued to. It cannot be set from the markup, and there is
+      no second-recipient field on the free tier — so the key has to change.
+
+      **Preferred: issue the key to a group, not to one person.** Create a
+      Workspace group (e.g. `leads@steadygrowthmarketing.com`) with both Yosef and
+      Dan in it, then get the Web3Forms key for that address. Everyone on the
+      group gets every lead, and adding or removing people later never touches the
+      site again. Issuing the key straight to Dan also works, but then it is Dan
+      only, and the next change means another code edit.
+
+      Then:
+      1. web3forms.com, enter the address. The key is emailed to it.
+      2. Replace the `access_key` value in `index.html`.
+      3. `python3 build/build.py` — the key is in all four pages and the
+         generator copies the form out of index.html, so this propagates it.
+      4. `grep -rc <new-key> --include='*.html' .` should report 4 files.
+      5. Submit a live test and confirm it arrives.
+
+      Until then the form still works and leads go to
+      yosef@steadygrowthmarketing.com. The old key is deliberately left in place
+      so nothing is dropped in the meantime.
+
+      **Faster alternative, no code change:** a Workspace routing rule, or a Gmail
+      filter on the receiving mailbox, forwarding anything from Web3Forms to Dan.
+      An admin routing rule applies immediately; a plain Gmail auto-forward makes
+      Dan confirm the address once.
 
 - [x] **WhatConverts** — installed in the `<head>` of all three pages
       (profile 170287). Verify two things on the live site: that dynamic number
