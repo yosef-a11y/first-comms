@@ -760,6 +760,12 @@
       '<a class="phone-link" href="tel:+17323028992">732-302-8992</a> and we will ' +
       'take the details over the phone.';
     form.insertBefore(note, form.firstElementChild);
+    /* Report it. The commonest cause of a failure here is not a bad submission
+       but a blocker or filter stopping the browser reaching api.web3forms.com —
+       a third-party domain. That loses the lead silently and looks like nothing
+       happened, so it needs to be countable rather than only logged. If this
+       event shows real volume, the form endpoint belongs on our own domain. */
+    track('form_error', window.location.pathname);
     if (detail) console.error('[FirstComms LP] Submission failed:', detail);
   }
 
