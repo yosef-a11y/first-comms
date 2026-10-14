@@ -50,18 +50,10 @@
   gtag('config', 'AW-17861173083');
   // The real conversion. Mark generate_lead as a key event in GA4, and import
   // it (or the Google Ads snippet) as the campaign's primary conversion action.
-  // Which page produced the lead, written to localStorage by the form page just
-  // before it posted. Read from storage rather than the URL so the redirect stays
-  // a plain address with nothing in it that could stop it resolving. Still
-  // validated: storage is same-origin but not a reason to skip checking shape.
-  var leadFrom = '/';
-  try {
-    var rec = JSON.parse(localStorage.getItem('fc_lead_from') || 'null');
-    if (rec && rec.p && Date.now() - rec.t < 30 * 60 * 1000 &&
-        /^\/[a-z0-9\-\/]*$/i.test(rec.p)) leadFrom = rec.p.slice(0, 60);
-    localStorage.removeItem('fc_lead_from');
-  } catch (e) {}
-  gtag('event', 'generate_lead', { event_category: 'Lead', event_label: leadFrom });
+  // Each landing page has its own copy of this page in its own directory, so the
+  // source is simply which file you are on. build/build.py rewrites this label
+  // for the generated copies.
+  gtag('event', 'generate_lead', { event_category: 'Lead', event_label: '/' });
 </script>
 
 <!-- WhatConverts — lead tracking and dynamic number insertion.
@@ -85,7 +77,7 @@
   <p>An RF engineer will review the building details and get back to you within one business day.</p>
 
   <ol>
-    <li><b>01</b><span>We check what the AHJ in that jurisdiction requires.</span></li>
+    <li><b>01</b><span>We check what your town requires for that building.</span></li>
     <li><b>02</b><span>We tell you whether a grid test or a full system is the right next step.</span></li>
     <li><b>03</b><span>You get a clear price for the testing, with no obligation to go further.</span></li>
   </ol>

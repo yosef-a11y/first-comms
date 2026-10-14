@@ -248,7 +248,7 @@
           <input type="hidden" name="access_key" value="6379ac4d-e514-46c2-bfc6-e340a66a0b7b">
           <input type="hidden" name="subject" value="New lead — emergency radio coverage landing page">
           <input type="hidden" name="from_name" value="FirstComms Landing Page">
-          <input type="hidden" name="redirect" value="https://first-comms.com/thank-you.html">
+          <input type="hidden" name="redirect" value="https://first-comms.com/rf-testing/thank-you.html">
           <input type="hidden" name="gclid" id="gclid" value="">
           <input type="hidden" name="page_source" id="pageSource" value="">
           <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
@@ -670,29 +670,15 @@
     ].filter(Boolean).join(' | ').slice(0, 200) || 'direct';
   }
 
-  /* Root-relative on purpose. 'thank-you.html' resolves against the CURRENT
-     directory, so on /bda-systems/ it pointed at /bda-systems/thank-you.html —
-     a 404, which also meant generate_lead never fired and those pages recorded
-     no conversions at all. The leading slash pins it to the one real page.
-     This override exists so a local or staging preview does not bounce the
-     visitor to production; it keeps that behaviour. The source page rides along
-     as ?from= so the conversion can be attributed to the page that produced it. */
-  /* Root-relative on purpose. 'thank-you.html' resolves against the CURRENT
-     directory, so on /bda-systems/ it pointed at /bda-systems/thank-you.html —
-     a 404, which also meant generate_lead never fired. The leading slash pins it
-     to the one real page. This override exists so a local or staging preview does
-     not bounce the visitor to production; it keeps that behaviour.
-     Deliberately NO query string: the redirect URL is handed to a third party,
-     and the plain form is the one shape known to work. The source page travels
-     in localStorage instead, which cannot affect whether the redirect resolves. */
+  /* Each landing page ships its own thank-you.html in its own directory, so
+     resolving 'thank-you.html' against the CURRENT directory lands on a real
+     file from any depth. That is also why the page-specific redirect value in
+     the markup is the real safety net: if this script never runs, the hardcoded
+     absolute URL still points at that page's own thank-you page.
+     No query string — the redirect is handed to a third party to perform, so it
+     stays the plainest shape that works. */
   var redirect = form.querySelector('input[name="redirect"]');
-  if (redirect) redirect.value = new URL('/thank-you.html', window.location.href).href;
-
-  try {
-    localStorage.setItem('fc_lead_from', JSON.stringify({
-      p: window.location.pathname, t: Date.now()
-    }));
-  } catch (e) {}
+  if (redirect) redirect.value = new URL('thank-you.html', window.location.href).href;
 
   form.addEventListener('submit', function (e) {
     if (!form.checkValidity()) {

@@ -33,6 +33,13 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name):
         f'        <li><a href="/{s}/"><strong>{n}</strong><span>{b}</span></a></li>'
         for s, n, b in others)
 
+    # The form is lifted from index.html, which hardcodes the homepage's
+    # thank-you page. Point it at this page's own copy, so that even with
+    # JavaScript disabled the visitor lands somewhere real.
+    form_html = shell.FORM.replace(
+        'value="https://first-comms.com/thank-you.html"',
+        f'value="https://first-comms.com/{slug}/thank-you.html"')
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +110,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name):
         </div>
       </div>
 
-{shell.FORM}
+{form_html}
     </div>
   </section>
 
@@ -403,4 +410,13 @@ for p in PAGES:
                 p['crumb'], p['body'], p['faqs'], p['service_name'])
     d = os.path.join(OUT, p['slug']); os.makedirs(d, exist_ok=True)
     open(os.path.join(d, 'index.html'), 'w').write(html)
-    print(f"wrote {p['slug']}/index.html  {len(html)} bytes")
+
+    # Its own thank-you page, in its own directory. This is what makes a 404
+    # after submitting impossible: the relative redirect, the hardcoded absolute
+    # redirect and the file on disk now all agree, whatever JavaScript does.
+    ty = open(os.path.join(OUT, 'thank-you.html')).read()
+    ty = ty.replace("event_label: '/'", f"event_label: '/{p['slug']}/'")
+    ty = ty.replace('href="index.html"', f'href="/{p["slug"]}/"')
+    open(os.path.join(d, 'thank-you.html'), 'w').write(ty)
+
+    print(f"wrote {p['slug']}/index.html  {len(html)} bytes  + thank-you.html")
