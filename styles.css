@@ -373,3 +373,24 @@ strong{font-weight:700;color:var(--brown-700)}
 .form-done p{margin-top:10px;font-size:.95rem;line-height:1.6;color:var(--brown-400)}
 .form-done p a{color:var(--orange-btn);font-weight:700}
 .form-done-rush{padding-top:12px;border-top:1px solid var(--cream-300)}
+
+/* The stats component is built for the dark sections; under the hero it sits in
+   the ticker band, which is already dark, so it only needs its top margin
+   dropped and a tighter cell. */
+.stats-hero{margin-top:0;border:0;background:rgba(255,255,255,.14)}
+.stats-hero .stat{padding:16px 18px}
+
+/* Named project list. Deliberately plain: these are buildings, not logos, and
+   dressing them up as badges would be the badge clutter the audit flagged. */
+.proj-list{display:grid;gap:10px;list-style:none;padding:0}
+@media(min-width:620px){.proj-list{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.proj-list{grid-template-columns:repeat(3,1fr)}}
+.proj-list li{background:var(--cream-50);border:1px solid var(--cream-300);
+  border-left:3px solid var(--orange);padding:16px 18px;
+  font-family:var(--mono);font-size:.9rem;line-height:1.4;color:var(--brown-900)}
+
+/* Figures in the hero badge row. The number carries the weight; the label is
+   support, so it stays in the quieter body face rather than the mono caps. */
+.badge-num{display:inline-flex;align-items:baseline;gap:6px;font-family:var(--sans);
+  font-size:.8rem;font-weight:600;letter-spacing:0;text-transform:none;color:var(--brown-600)}
+.badge-num b{font-family:var(--mono);font-size:.95rem;color:var(--brown-900)}
