@@ -1150,30 +1150,28 @@
      destination file itself loaded fine. Confirming in place removes the step.
      It also means a failed submission can say so, instead of silently landing
      the visitor somewhere unexpected. */
-  function leadConverted() {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'generate_lead', {
-        event_category: 'Lead', event_label: window.location.pathname
-      });
-    }
-  }
+  /* On success, go to this page's thank-you page.
 
-  function showSuccess() {
-    var card = form.closest('.form-card') || form.parentNode;
-    var panel = document.createElement('div');
-    panel.setAttribute('role', 'status');
-    panel.className = 'form-done';
-    panel.innerHTML =
-      '<h2>Got it &mdash; your request is in</h2>' +
-      '<p>An engineer will review the building details and come back to you within ' +
-      'one business day.</p>' +
-      '<p class="form-done-rush">In a rush &mdash; failed inspection, or a CO on the ' +
-      'line? Call <a class="phone-link" href="tel:+17323028992">732-302-8992</a> and ' +
-      'say so. We move those first.</p>';
-    card.innerHTML = '';
-    card.appendChild(panel);
-    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    leadConverted();
+     The earlier in-place confirmation was a reaction to submissions appearing to
+     404. That turned out to be a blocked endpoint, not the redirect — so staying
+     put solved a problem that was never there, and cost something real: the
+     visitor no longer landed on the thank-you page. WhatConverts and any
+     URL-based conversion in Google Ads are built around that page load, so
+     keeping people here risks their lead tracking seeing nothing.
+
+     The difference from before is who performs the navigation. Web3Forms used to
+     redirect after the POST, which is a step we cannot observe. Now the POST goes
+     out by fetch, we read the result, and we navigate ourselves — so a blocked or
+     failing endpoint produces a message on the page rather than a browser error,
+     which was the fix that actually mattered.
+
+     generate_lead is NOT fired here: thank-you.html fires it on load, and doing
+     both would double-count. */
+  function goToThankYou() {
+    var field = form.querySelector('input[name="redirect"]');
+    var url = (field && field.value) ||
+      new URL('thank-you.html', window.location.href).href;
+    window.location.assign(url);
   }
 
   function showFailure(detail) {
@@ -1224,7 +1222,7 @@
         });
       })
       .then(function (data) {
-        if (data && data.success) showSuccess();
+        if (data && data.success) goToThankYou();
         else showFailure((data && data.message) || 'rejected');
       })
       .catch(function (err) { showFailure(err && err.message); });
