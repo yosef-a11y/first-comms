@@ -49,7 +49,9 @@ where the choice is available.
 - Annual testing, battery replacement and record-keeping
 - Repair of existing BDA systems
 
-Not offered: permitting is not handled in house, and the company does not do
+Turnkey: permitting and fire department sign-off are handled as part of the job.
+
+Not offered: the company does not do
 cellular or Wi-Fi distributed antenna systems. The work is emergency responder
 in-building communication only.
 

@@ -284,7 +284,7 @@ bda_body = (
      ('Survey and test','Before anything is specified, the building is measured. This tells us how much gain is needed '
       'and where the antennas have to go.'),
      ('Design and submittal','Drawings, equipment schedule and the cut sheets your fire official will want to see. '
-      'We do not handle permitting in house, but we provide the documentation your permit needs.'),
+      'Permitting is part of the job: we take it through to fire department sign-off, so you are not left managing it.'),
      ('Rough-in and install','Our own crew — not subcontractors. Coax, antennas, the amplifier, the battery enclosure '
       'and the annunciator, co-ordinated around whoever else is in the building.'),
      ('Commission and certify','The installed system is tested against the same grid as the original survey. '
@@ -385,8 +385,8 @@ PAGES = [
      ('Will this hold up my certificate of occupancy?','It can. Radio coverage is commonly checked before final sign-off, so a '
       'missing or failed test is one of the few things that can keep a finished building empty. Testing early is much cheaper '
       'than testing late.'),
-     ('Do you handle the permit?','No — permitting is not done in house. We provide the drawings, equipment schedules and test '
-      'documentation your permit application needs, and work alongside whoever is filing it.'),
+     ('Do you handle the permit?','Yes. We are turnkey: testing, design, installation, the permit drawings and documentation, '
+      'and fire department sign-off are all part of the job, so you have one company to deal with from first test to certification.'),
      ('Does this apply to existing buildings, or only new construction?','Both. It comes up most often on new construction, '
       'because coverage is checked before the certificate of occupancy and that gives it a hard deadline. But the requirement '
       'is about the building, not its age. Existing buildings get caught by it during renovations, a change of use, or simply '
