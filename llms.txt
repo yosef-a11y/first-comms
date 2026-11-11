@@ -74,4 +74,6 @@ Serving New Jersey, New York, Pennsylvania, Delaware and Connecticut.
   Class A versus Class B amplifiers, UL 2524 listing, what installation involves
 - https://first-comms.com/rf-testing/ — the measurement side: grid testing, signal strength and
   intelligibility, critical areas, what the written report contains
+- https://first-comms.com/errcs-inspection-repair/ — systems already installed: annual ERRCS
+  testing, failed inspections, fault alarms, repair and retesting
 - https://first-comms.com/privacy.html — privacy policy

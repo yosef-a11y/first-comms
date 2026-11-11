@@ -172,9 +172,10 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_
 '''
 
 SLUGS = [
- ('errc-systems','ERRC systems','What the code asks for, and how a building proves it'),
- ('bda-systems','BDA systems','The equipment itself — what goes in and what it costs to run'),
- ('rf-testing','RF &amp; radio coverage testing','How a building is measured, and what the report says'),
+ ('errc-systems','ERRCS installation','What the code asks for, and how a building proves it'),
+ ('bda-systems','BDA system installation','The equipment itself — what goes in and what it costs to run'),
+ ('rf-testing','ERRCS &amp; radio coverage testing','How a building is measured, and what the report says'),
+ ('errcs-inspection-repair','ERRCS inspection &amp; repair','Annual testing, failed inspections and systems that have stopped working'),
 ]
 
 def sec(id_, eyebrow, h2, lede, inner, cls='section'):
@@ -208,15 +209,15 @@ def steps(items):
 
 # ---------------------------------------------------------------- ERRC
 errc_body = (
- sec('what','The short version','An ERRC system is how a building passes the radio test',
-   'ERRC stands for Emergency Responder Radio Coverage. It is the requirement, and the equipment '
-   'installed to meet it. If firefighters cannot talk on their handheld radios inside your building, '
-   'the building does not comply — and an ERRC system is what fixes that.',
+ sec('what','The short version','An ERRCS is how a building passes the radio test',
+   'ERRCS stands for Emergency Responder Radio Communication System &mdash; also written ERRC, for Emergency '
+   'Responder Radio Coverage. It is the requirement, and the equipment installed to meet it. If firefighters cannot '
+   'talk on their handheld radios inside your building, the building does not comply — and an ERRCS is what fixes that.',
    cards([
      ('Why buildings fail','Concrete, steel, low-emissivity glass and anything below grade absorb radio signal. '
       'Modern energy-efficient construction is particularly good at it, which is why new buildings fail as often as old ones.'),
      ('What gets installed','A donor antenna on the roof, an amplifier, and antennas distributed through the building. '
-      'You will see the same thing called a BDA or a public safety DAS.'),
+      'The same ERRCS installation is also called a BDA system or a public safety DAS.'),
      ('Who decides','Your local fire official. Codes set the benchmark, but the authority that signs off on your '
       'building is the one whose interpretation counts.'),
    ]))
@@ -240,7 +241,7 @@ errc_body = (
       'The result is a written report, and some buildings pass without any equipment at all.'),
      ('Design to what the test found','If it fails, the test data says where and by how much. The design follows from that '
       '— not from a template, and not from a guess about the building.'),
-     ('Install and commission','Our own crew installs it. Commissioning proves the installed system actually delivers the '
+     ('Install and commission','Our own crew installs the ERRCS. Commissioning proves the installed system actually delivers the '
       'coverage the design promised.'),
      ('Certify, then test yearly','Final acceptance testing produces the certification. After that it is an annual test, '
       'battery checks and records kept current.'),
@@ -326,20 +327,55 @@ rf_body = (
    ]), cls='section bg-dark')
 )
 
+# ---------------------------------------------------------------- Inspection & repair
+repair_body = (
+ sec('what','Already have a system','Annual ERRCS inspection, and what to do when one fails',
+   'Once an ERRCS or BDA system is in, it has to keep working &mdash; and keep proving it works. That means a test every '
+   'year, batteries that hold their charge, and records the fire official can ask for at any time.',
+   cards([
+     ('Annual testing','Required every year once a system is installed, and it is the building owner&rsquo;s obligation, '
+      'not the installer&rsquo;s. We do the yearly test and keep the records ready for the fire official.'),
+     ('Battery checks','Systems are generally required to run on battery through a power loss. Batteries age; '
+      'we check them at the yearly test and replace them when they are due.'),
+     ('Fault alarms','The annunciator panel reports antenna failure, amplifier failure and low battery. If yours is '
+      'showing a fault, the system is telling you it may not work when it is needed.'),
+   ]))
+ + sec('failed','Failed inspection','If the building or the system did not pass',
+   'A fail is a measurement, not a verdict. The same grid data that shows where the building fell short shows what it '
+   'would take to fix it.', cards([
+     ('Retest to find the fault','We measure the building against the grid so the fail can be located &mdash; a dead '
+      'stairwell, a basement, a floor &mdash; rather than argued about.'),
+     ('Repair or re-tune','A failing antenna, amplifier or battery is replaced; a channelised system whose county channels '
+      'have changed may need re-tuning rather than new equipment.'),
+     ('Retest and document','The repaired system is tested against the same grid, and you get a written result you can '
+      'hand back to the fire official.'),
+   ]), cls='section bg-card')
+ + sec('how','How it works','From flagged to back in compliance',
+   'Each step produces something the fire official can look at.', steps([
+     ('Tell us what happened','A failed inspection, a fault on the panel, or a yearly test that is coming due.'),
+     ('Test the building','A grid test shows what the system is actually delivering, area by area.'),
+     ('Fix what the test found','Replace or re-tune whatever has stopped doing its job.'),
+     ('Retest and keep the records','A documented result now, and the yearly test after that.'),
+   ]), cls='section bg-dark')
+)
+
 PAGES = [
  dict(slug='errc-systems', fig='fig-errc',
    fig_alt='Amplifier, battery backup cabinet and system records box installed on the concrete core wall of a high-rise lobby.',
-   title='ERRC Systems in New Jersey | Requirements &amp; Compliance | FirstComms',
-   desc='What an ERRC system is, which codes apply, and how a building proves compliance. Emergency responder radio coverage testing and installation across New Jersey.',
-   h1='ERRC systems: <span class="hl">what the code asks for</span>, and what that means for your building.',
-   lede='If a fire official, architect or inspector has told you your building needs an ERRC system, this page explains '
-        'what that is, which standard it comes from, and what it takes to satisfy it. Measurement first &mdash; some buildings '
-        'already pass.',
-   crumb='ERRC systems', body=errc_body, service_name='ERRC system compliance, testing and installation',
+   title='ERRCS Installation &amp; Testing in New Jersey | ERRC Systems | FirstComms',
+   desc='ERRCS installation, testing and yearly compliance in New Jersey. Emergency responder radio communication systems designed and installed by our own crew, tested to IFC 510 and NFPA 1225.',
+   h1='ERRCS installation &amp; testing: <span class="hl">pass the fire department&rsquo;s radio test</span>.',
+   lede='We test, design and install ERRCS &mdash; emergency responder radio communication systems, also called ERRC, '
+        'public safety DAS or BDA systems &mdash; for buildings across New Jersey. If a fire official or inspector has flagged '
+        'your building, we measure it first: some buildings already pass.',
+   crumb='ERRCS installation', body=errc_body, service_name='ERRCS installation, testing and compliance',
    faqs=[
-     ('What does ERRC actually stand for?','Emergency Responder Radio Coverage. It describes both the requirement — that '
-      'firefighters and police can use their handheld radios anywhere inside a building — and the system installed to meet it. '
-      'You will hear the same system called a BDA or a public safety DAS.'),
+     ('What does ERRCS stand for?','Emergency Responder Radio Communication System. You will also see ERRC, for Emergency '
+      'Responder Radio Coverage. Both describe the requirement — that firefighters and police can use their handheld radios '
+      'anywhere inside a building — and the system installed to meet it.'),
+     ('Is an ERRCS the same as a BDA or a public safety DAS?','For practical purposes, yes. ERRCS and ERRC name the requirement '
+      'and the system; the BDA (bi-directional amplifier) is the main piece of equipment in it; public safety DAS is another name '
+      'for the same installation. A quote for one and a spec for another are usually the same job.'),
      ('Who decides whether my building needs one?','Your local fire official has the final say. Codes such as IFC 510 and '
       'NFPA 1225 set the benchmark, but the authority signing off on your building applies it. That is why we test to the '
       'standard your jurisdiction actually uses rather than a generic one.'),
@@ -358,12 +394,13 @@ PAGES = [
    ]),
  dict(slug='bda-systems', fig='fig-bda',
    fig_alt='Fire alarm panel, amplifier enclosure and battery backup cabinet mounted together on an equipment room wall.',
-   title='BDA Systems &amp; Installation in New Jersey | FirstComms',
-   desc='What a BDA system is made of, how Class A and Class B differ, and what installation involves. Bi-directional amplifier design and installation across New Jersey.',
-   h1='BDA systems: <span class="hl">the equipment</span> that fixes in-building radio coverage.',
-   lede='A bi-directional amplifier is what gets installed when a building cannot pass its radio coverage test. '
-        'This page covers what is in one, the choice between Class A and Class B, and what the installation actually involves.',
-   crumb='BDA systems', service_name='BDA system design and installation', body=bda_body,
+   title='BDA System Installation in New Jersey | Public Safety BDA | FirstComms',
+   desc='Public safety BDA system design and installation in New Jersey by our own crew. Class A and Class B bi-directional amplifiers, UL 2524 listed, commissioned against a grid test.',
+   h1='BDA system installation: <span class="hl">public safety BDAs</span> that fix in-building radio coverage.',
+   lede='We design and install public safety BDA systems &mdash; the bi-directional amplifiers that get a building through its '
+        'radio coverage test &mdash; across New Jersey, with our own crew. Below: what goes in one, Class A versus Class B, '
+        'and what installation involves.',
+   crumb='BDA system installation', service_name='BDA system design and installation', body=bda_body,
    faqs=[
      ('Is a BDA the same thing as an ERRC system?','In everyday use, yes. ERRC is the requirement, BDA is the main piece of '
       'equipment used to meet it, and public safety DAS is another name for the same installation. If someone quoted you for '
@@ -390,12 +427,12 @@ PAGES = [
    ]),
  dict(slug='rf-testing', fig='fig-rf',
    fig_alt='Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor.',
-   title='RF &amp; Radio Coverage Testing in New Jersey | Grid Testing | FirstComms',
-   desc='How radio coverage testing works: grid testing, signal strength, intelligibility and what the report contains. Emergency responder radio coverage testing across New Jersey.',
-   h1='Radio coverage testing: <span class="hl">a measured answer</span> on whether your building passes.',
-   lede='Before anyone can tell you what your building needs, it has to be measured. A grid test gives you a written, '
-        'defensible answer — and if the building already passes, that is the end of it.',
-   crumb='RF &amp; radio coverage testing', service_name='Emergency responder radio coverage testing', body=rf_body,
+   title='ERRCS Testing &amp; Radio Coverage Testing in New Jersey | FirstComms',
+   desc='ERRCS and radio coverage testing in New Jersey: fire department grid testing, signal strength and intelligibility, with a written pass/fail report for your fire official.',
+   h1='ERRCS &amp; radio coverage testing: <span class="hl">a measured answer</span> on whether your building passes.',
+   lede='We grid-test buildings across New Jersey for emergency responder radio coverage. You get a written, defensible '
+        'pass or fail for your fire official &mdash; and if the building already passes, that is the end of it.',
+   crumb='ERRCS &amp; radio coverage testing', service_name='Emergency responder radio coverage testing', body=rf_body,
    faqs=[
      ('How long does a test take?','Most buildings are measured in a day; large or complex ones take longer. The written report '
       'usually follows within a few days.'),
@@ -412,6 +449,27 @@ PAGES = [
       'channelised system needs re-tuning; a wider change can mean more than that. This is one of the practical reasons the '
       'annual test matters — a system that has quietly stopped matching the network it is amplifying turns up at the yearly '
       'test rather than during an emergency.'),
+   ]),
+ dict(slug='errcs-inspection-repair', fig='fig-rf',
+   fig_alt='Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor.',
+   title='ERRCS &amp; BDA Annual Inspection and Repair in New Jersey | FirstComms',
+   desc='Annual ERRCS inspection, BDA repair and retesting in New Jersey. Failed fire inspection or a fault on the panel? We test, repair and document it with our own crew.',
+   h1='ERRCS &amp; BDA inspection and repair: <span class="hl">back in compliance</span>, with the paperwork to prove it.',
+   lede='Failed fire inspection, a fault on the annunciator panel, or a yearly ERRCS test coming due? We test the building, '
+        'repair or re-tune the BDA system, and give you a written result for your fire official &mdash; across New Jersey.',
+   crumb='ERRCS inspection &amp; repair', service_name='ERRCS and BDA annual inspection, testing and repair', body=repair_body,
+   faqs=[
+     ('Do I need to test my ERRCS every year?','Yes, annual testing is generally required once a system is in, and it is the '
+      'building owner&rsquo;s responsibility rather than the installer&rsquo;s. We do the yearly test, replace batteries when '
+      'due and keep the records ready for the fire official.'),
+     ('Can you work on a system someone else installed?','Tell us what is in the building and what happened. The first step '
+      'is the same either way: measure what the system is actually delivering.'),
+     ('My building failed its radio test. What now?','The same measurements that show the failure show the fix &mdash; how much '
+      'gain is needed and roughly where antennas have to go. If there is already a system, that usually means finding the '
+      'part that has stopped doing its job.'),
+     ('What if the county changed its radio system?','A move to different channels can mean a channelised system needs '
+      're-tuning; a wider change can mean more than that. A system that has quietly stopped matching the network it amplifies '
+      'shows up at the yearly test rather than during an emergency.'),
    ]),
 ]
 
