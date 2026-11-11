@@ -17,7 +17,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_
         {"@type":"ListItem","position":1,"name":"Home","item":"https://first-comms.com/"},
         {"@type":"ListItem","position":2,"name":crumb,"item":url}]},
       {"@type":"Service","name":service_name,"provider":{"@id":BIZ},
-       "areaServed":{"@type":"State","name":"New Jersey"},"url":url},
+       "areaServed":[{"@type":"State","name":n} for n in ("New Jersey","New York","Pennsylvania")],"url":url},
       {"@type":"FAQPage","mainEntity":faq_ld}]}
 
     faq_html = '\n'.join(f'''        <div class="faq-item">
@@ -106,6 +106,7 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_
           <span class="badge">NFPA 1225</span>
           <span class="badge">NFPA 72</span>
           <span class="badge">UL 2524</span>
+          <span class="badge">500+ Systems Installed</span>
           <span class="badge">14+ Years</span>
         </div>
 
@@ -223,7 +224,7 @@ errc_body = (
    ]))
  + sec('code','What the code asks for','The four standards that come up',
    'Which apply depends on your jurisdiction and when the building was permitted. These are the ones that '
-   'appear on nearly every New Jersey project.', cards([
+   'appear on nearly every project across New Jersey, New York and Pennsylvania.', cards([
      ('IFC Section 510','The in-building radio coverage requirement itself: adequate coverage for emergency responders, '
       'and the testing to demonstrate it.'),
      ('NFPA 1225','Sets the coverage benchmark — signal strength and intelligibility — and the annual testing obligation. '
@@ -362,11 +363,11 @@ repair_body = (
 PAGES = [
  dict(slug='errc-systems', fig='fig-errc',
    fig_alt='Amplifier, battery backup cabinet and system records box installed on the concrete core wall of a high-rise lobby.',
-   title='ERRCS Installation &amp; Testing in New Jersey | ERRC Systems | FirstComms',
-   desc='ERRCS installation, testing and yearly compliance in New Jersey. Emergency responder radio communication systems designed and installed by our own crew, tested to IFC 510 and NFPA 1225.',
+   title='ERRCS Installation &amp; Testing in NJ, NY &amp; PA | ERRC Systems | FirstComms',
+   desc='ERRCS installation, testing and yearly compliance across the Tri-State area. Emergency responder radio communication systems designed and installed by our own crew, tested to IFC 510 and NFPA 1225.',
    h1='ERRCS installation &amp; testing: <span class="hl">pass the fire department&rsquo;s radio test</span>.',
    lede='We test, design and install ERRCS &mdash; emergency responder radio communication systems, also called ERRC, '
-        'public safety DAS or BDA systems &mdash; for buildings across New Jersey. If a fire official or inspector has flagged '
+        'public safety DAS or BDA systems &mdash; for buildings across New Jersey, New York and Pennsylvania. If a fire official or inspector has flagged '
         'your building, we measure it first: some buildings already pass.',
    crumb='ERRCS installation', body=errc_body, service_name='ERRCS installation, testing and compliance',
    faqs=[
@@ -394,11 +395,11 @@ PAGES = [
    ]),
  dict(slug='bda-systems', fig='fig-bda',
    fig_alt='Fire alarm panel, amplifier enclosure and battery backup cabinet mounted together on an equipment room wall.',
-   title='BDA System Installation in New Jersey | Public Safety BDA | FirstComms',
-   desc='Public safety BDA system design and installation in New Jersey by our own crew. Class A and Class B bi-directional amplifiers, UL 2524 listed, commissioned against a grid test.',
+   title='BDA System Installation in NJ, NY &amp; PA | Public Safety BDA | FirstComms',
+   desc='Public safety BDA system design and installation across the Tri-State area by our own crew. Class A and Class B bi-directional amplifiers, UL 2524 listed, commissioned against a grid test.',
    h1='BDA system installation: <span class="hl">public safety BDAs</span> that fix in-building radio coverage.',
    lede='We design and install public safety BDA systems &mdash; the bi-directional amplifiers that get a building through its '
-        'radio coverage test &mdash; across New Jersey, with our own crew. Below: what goes in one, Class A versus Class B, '
+        'radio coverage test &mdash; across New Jersey, New York and Pennsylvania, with our own crew. Below: what goes in one, Class A versus Class B, '
         'and what installation involves.',
    crumb='BDA system installation', service_name='BDA system design and installation', body=bda_body,
    faqs=[
@@ -427,10 +428,10 @@ PAGES = [
    ]),
  dict(slug='rf-testing', fig='fig-rf',
    fig_alt='Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor.',
-   title='ERRCS Testing &amp; Radio Coverage Testing in New Jersey | FirstComms',
-   desc='ERRCS and radio coverage testing in New Jersey: fire department grid testing, signal strength and intelligibility, with a written pass/fail report for your fire official.',
+   title='ERRCS Testing &amp; Radio Coverage Testing in NJ, NY &amp; PA | FirstComms',
+   desc='ERRCS and radio coverage testing across the Tri-State area: fire department grid testing, signal strength and intelligibility, with a written pass/fail report for your fire official.',
    h1='ERRCS &amp; radio coverage testing: <span class="hl">a measured answer</span> on whether your building passes.',
-   lede='We grid-test buildings across New Jersey for emergency responder radio coverage. You get a written, defensible '
+   lede='We grid-test buildings across New Jersey, New York and Pennsylvania for emergency responder radio coverage. You get a written, defensible '
         'pass or fail for your fire official &mdash; and if the building already passes, that is the end of it.',
    crumb='ERRCS &amp; radio coverage testing', service_name='Emergency responder radio coverage testing', body=rf_body,
    faqs=[
@@ -452,11 +453,11 @@ PAGES = [
    ]),
  dict(slug='errcs-inspection-repair', fig='fig-rf',
    fig_alt='Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor.',
-   title='ERRCS &amp; BDA Annual Inspection and Repair in New Jersey | FirstComms',
-   desc='Annual ERRCS inspection, BDA repair and retesting in New Jersey. Failed fire inspection or a fault on the panel? We test, repair and document it with our own crew.',
+   title='ERRCS &amp; BDA Annual Inspection and Repair in NJ, NY &amp; PA | FirstComms',
+   desc='Annual ERRCS inspection, BDA repair and retesting across the Tri-State area. Failed fire inspection or a fault on the panel? We test, repair and document it with our own crew.',
    h1='ERRCS &amp; BDA inspection and repair: <span class="hl">back in compliance</span>, with the paperwork to prove it.',
    lede='Failed fire inspection, a fault on the annunciator panel, or a yearly ERRCS test coming due? We test the building, '
-        'repair or re-tune the BDA system, and give you a written result for your fire official &mdash; across New Jersey.',
+        'repair or re-tune the BDA system, and give you a written result for your fire official &mdash; across New Jersey, New York and Pennsylvania.',
    crumb='ERRCS inspection &amp; repair', service_name='ERRCS and BDA annual inspection, testing and repair', body=repair_body,
    faqs=[
      ('Do I need to test my ERRCS every year?','Yes, annual testing is generally required once a system is in, and it is the '
