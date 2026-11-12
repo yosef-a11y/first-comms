@@ -11,7 +11,18 @@
   --brown-900:#240D07; --brown-800:#3A1710; --brown-700:#5A2415;
   --brown-600:#74341E; --brown-400:#8A5540; --brown-200:#C8B3A6;
 
-  --orange:#FA5019; --orange-btn:#D93F12; --orange-lift:#FF6A3D; --orange-wash:#FBE3DA;
+  /* Orange has three jobs, and one token cannot do all three at an accessible
+     contrast. Signal marks things (rules, icons, 3:1 is enough). Action fills
+     buttons (white label on it, 4.50:1). Text is for links and small labels on
+     cream, where Action only reaches 4.22:1 and fails AA. */
+  --orange:#FA5019;        /* Signal  — rules, icons, marks */
+  --orange-btn:#D93F12;    /* Action  — button fills, white label 4.50:1 */
+  --orange-deep:#B93209;   /* Text    — links, small labels; 5.60 on cream-50, 4.63 on cream-200 */
+  --orange-lift:#FF6A3D;   /* Signal on dark — 6.50:1 on brown-900 */
+  --orange-wash:#FBE3DA;   /* tint for notices */
+
+  --success:#0C7A4D;       /* pass / compliant — 5.05:1 on cream-50 */
+  --cream-350:#D8C4B8;     /* the hero line-work */
 
   --text:var(--brown-700); --muted:var(--brown-600);
   --line:var(--cream-300); --bg:var(--cream-200);
@@ -50,7 +61,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .bg-dark{background:var(--brown-900);color:var(--brown-200)}
 .bg-dark h2,.bg-dark h3{color:var(--cream-100)}
 .eyebrow{display:inline-block;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;color:var(--orange-btn);border-bottom:2px solid var(--orange);padding-bottom:5px}
+  text-transform:uppercase;color:var(--orange-deep);border-bottom:2px solid var(--orange);padding-bottom:5px}
 .bg-dark .eyebrow{color:var(--orange-lift)}
 .lede{font-size:1.05rem;max-width:60ch}
 .bg-dark .lede{color:var(--brown-200)}
@@ -67,7 +78,7 @@ strong{font-weight:700;color:var(--brown-700)}
   cursor:pointer;border:0;text-align:center;background:var(--orange-btn);color:#fff;
   clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut));
   transition:background-color .15s ease}
-.btn:hover{background:#B93209}
+.btn:hover{background:var(--orange-deep)}
 .btn:focus-visible{outline:none;background:var(--brown-900)}
 .btn-sm{padding:11px 18px;font-size:.72rem;--cut:9px}
 .btn-block{width:100%}
@@ -106,13 +117,14 @@ strong{font-weight:700;color:var(--brown-700)}
 .header-phone{display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.76rem;
   font-weight:700;letter-spacing:.06em;white-space:nowrap;padding:11px 14px;background:var(--orange-btn);color:#fff;
   clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)}
-.header-phone:hover{background:#B93209}
+.header-phone:hover{background:var(--orange-deep)}
 .header-phone svg{stroke:#fff}
 @media(min-width:620px){.header-phone{font-size:.82rem;padding:12px 18px}}
 @media(min-width:980px){.header-nav{display:flex}}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;padding:clamp(30px,4.5vw,52px) 0 clamp(34px,5vw,58px)}
+.hero-lines g{stroke:var(--cream-350)}
 .hero-lines{position:absolute;top:-40px;right:-160px;width:620px;opacity:.5;pointer-events:none}
 .hero-grid{position:relative;display:grid;gap:30px;align-items:start}
 @media(min-width:1000px){.hero-grid{grid-template-columns:1.02fr .98fr;gap:42px}}
@@ -246,7 +258,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .split{display:grid;gap:16px}
 @media(min-width:700px){.split{grid-template-columns:1fr 1fr}}
 .split-item{padding:20px;border:1px solid var(--cream-300);background:var(--cream-50)}
-.split-item.pass{border-left:4px solid #0E8F5A}
+.split-item.pass{border-left:4px solid var(--success)}
 .split-item.fix{border-left:4px solid var(--orange)}
 .split-item h3{margin-bottom:8px}
 .split-item p{font-size:.93rem;line-height:1.6;color:var(--brown-400)}
@@ -276,7 +288,7 @@ strong{font-weight:700;color:var(--brown-700)}
 @media(min-width:1000px){.chips{grid-template-columns:repeat(4,1fr)}}
 .chip{display:flex;gap:11px;align-items:baseline;padding:14px 16px;background:var(--cream-50);
   border:1px solid var(--cream-300);font-size:.9rem;line-height:1.45}
-.chip b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--orange-btn);flex:none}
+.chip b{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;color:var(--orange-deep);flex:none}
 
 /* ---------- Pills ---------- */
 .pill-list{display:flex;flex-wrap:wrap;gap:7px}
@@ -289,7 +301,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 4px;
   background:none;border:0;text-align:left;font-family:var(--mono);font-size:.85rem;font-weight:700;
   letter-spacing:.04em;text-transform:uppercase;line-height:1.45;color:var(--brown-700);cursor:pointer}
-.faq-q:hover{color:var(--orange-btn)}
+.faq-q:hover{color:var(--orange-deep)}
 .faq-q .chev{flex:none;transition:transform .2s ease;color:var(--orange-btn)}
 .faq-item.open .faq-q .chev{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .28s ease}
@@ -354,7 +366,7 @@ strong{font-weight:700;color:var(--brown-700)}
 .crumb{font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--brown-400);margin-bottom:14px}
 .crumb a{color:var(--brown-600)}
-.crumb a:hover{color:var(--orange-btn)}
+.crumb a:hover{color:var(--orange-deep)}
 .crumb span[aria-hidden]{margin:0 7px;color:var(--cream-400)}
 
 /* Cross-links between the keyword pages. These matter for more than navigation:
@@ -372,7 +384,7 @@ strong{font-weight:700;color:var(--brown-700)}
 /* Confirmation shown in place of the form after a successful submission. */
 .form-done h2{font-size:1.15rem;color:var(--brown-900)}
 .form-done p{margin-top:10px;font-size:.95rem;line-height:1.6;color:var(--brown-400)}
-.form-done p a{color:var(--orange-btn);font-weight:700}
+.form-done p a{color:var(--orange-deep);font-weight:700}
 .form-done-rush{padding-top:12px;border-top:1px solid var(--cream-300)}
 
 /* The stats component is built for the dark sections; under the hero it sits in
