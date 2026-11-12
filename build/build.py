@@ -92,6 +92,13 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_
         <h1 id="hero-headline">{h1}</h1>
         <p class="hero-sub">{lede}</p>
 
+        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
+             against the document, so a relative one would look inside this
+             page's own directory. Two files so a phone never pulls the desktop
+             crop. -->
+        <div class="hero-figure" role="img" aria-label="{fig_alt}"
+             style="--fig-sm:url('/images/{fig}-sm.jpg');--fig-lg:url('/images/{fig}.jpg')"></div>
+
         <ul class="hero-points">
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
             <span><strong>Testing</strong> that tells you whether you even need a system</span></li>
@@ -110,12 +117,6 @@ def page(slug, title, desc, h1, lede, crumb, body, faqs, service_name, fig, fig_
           <span class="badge">14+ Years</span>
         </div>
 
-        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
-             against the document, so a relative one would look inside this
-             page's own directory. Two files so a phone never pulls the desktop
-             crop. -->
-        <div class="hero-figure" role="img" aria-label="{fig_alt}"
-             style="--fig-sm:url('/images/{fig}-sm.jpg');--fig-lg:url('/images/{fig}.jpg')"></div>
       </div>
 
 {form_html}

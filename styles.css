@@ -168,10 +168,11 @@ strong{font-weight:700;color:var(--brown-700)}
   .hero-copy{display:flex;flex-direction:column}
   /* margin-top:auto alone would let the photo butt against the badges whenever
      the copy column has no slack, so the badges carry the minimum gap. */
-  .hero-copy .badge-row{margin-bottom:24px}
+  .hero-copy .badge-row{margin-bottom:0}
   /* margin-top:auto pins the photo to the bottom of the copy column, so its
      lower edge lines up with the form card's instead of floating mid-column. */
-  .hero-figure{margin:0;margin-top:auto;background-image:var(--fig-lg,url("images/hero.jpg"))}
+  /* No longer pinned to the bottom of the column: it sits in the copy flow now. */
+  .hero-figure{margin:22px 0 0;background-image:var(--fig-lg,url("images/hero.jpg"))}
 }
 
 /* ---------- Form ---------- */

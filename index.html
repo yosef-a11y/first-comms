@@ -253,6 +253,13 @@
           already pass.
         </p>
 
+        <!-- Directly under the intro, which is where a hero image normally sits.
+             It used to hang off the bottom of the column below the figures: that
+             put it below the fold and made it read as an afterthought rather
+             than part of the hero. -->
+        <div class="hero-figure" role="img"
+             aria-label="Two firefighters testing handheld radios beside an installed signal booster in a building's service room"></div>
+
         <!-- People arrive from an ad with one specific trigger already in mind.
              Letting them say which one in a single tap gives them something to
              do in the first few seconds, sends them to the part of the page that
@@ -288,17 +295,7 @@
           <span class="badge badge-num"><b>14+</b> years</span>
         </div>
 
-        <!-- The photo gets its own bounded block in the empty lower-left of the
-             hero. It sits below the copy, never behind it, at full strength with
-             hard edges — no scrim, no fade, nothing overlapping it. Desktop only;
-             on a stacked hero it would just push the form down.
-             It is a CSS background rather than an <img> on purpose: an <img> is
-             found by the preload scanner and downloaded on phones even though
-             this block is display:none there, wasting 177KB on exactly the
-             visitors most sensitive to it. Backgrounds on hidden elements are
-             never fetched. role/aria-label keep it announced to screen readers. -->
-        <div class="hero-figure" role="img"
-             aria-label="Two firefighters testing handheld radios beside an installed signal booster in a building's service room"></div>
+
       </div>
 
       <!-- ============ LEAD FORM ============ -->

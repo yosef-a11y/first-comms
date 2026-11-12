@@ -228,6 +228,13 @@
         <h1 id="hero-headline">ERRCS &amp; radio coverage testing: <span class="hl">a measured answer</span> on whether your building passes.</h1>
         <p class="hero-sub">We grid-test buildings across New Jersey, New York and Pennsylvania for emergency responder radio coverage. You get a written, defensible pass or fail for your fire official &mdash; and if the building already passes, that is the end of it.</p>
 
+        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
+             against the document, so a relative one would look inside this
+             page's own directory. Two files so a phone never pulls the desktop
+             crop. -->
+        <div class="hero-figure" role="img" aria-label="Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor."
+             style="--fig-sm:url('/images/fig-rf-sm.jpg');--fig-lg:url('/images/fig-rf.jpg')"></div>
+
         <ul class="hero-points">
           <li><svg width="17" height="17" viewBox="0 0 24 24"><use href="#i-check"/></svg>
             <span><strong>Testing</strong> that tells you whether you even need a system</span></li>
@@ -246,12 +253,6 @@
           <span class="badge">14+ Years</span>
         </div>
 
-        <!-- Absolute /images/ path on purpose: url() in an inline style resolves
-             against the document, so a relative one would look inside this
-             page's own directory. Two files so a phone never pulls the desktop
-             crop. -->
-        <div class="hero-figure" role="img" aria-label="Two firefighters using handheld radios beside the installed amplifier and battery cabinets in an equipment corridor."
-             style="--fig-sm:url('/images/fig-rf-sm.jpg');--fig-lg:url('/images/fig-rf.jpg')"></div>
       </div>
 
       <div class="form-card" id="lead-form">
