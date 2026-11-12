@@ -33,7 +33,36 @@
   --shadow-sm:0 1px 3px rgba(36,13,7,.08);
   --shadow-md:0 12px 30px rgba(36,13,7,.10);
   --shadow-lg:0 26px 60px rgba(36,13,7,.18);
-  --container:1180px; --header-h:64px; --cut:12px;
+  --container:1180px; --header-h:64px;
+
+  /* The bevel: 12px cut from two opposite corners of a filled button with
+     clip-path. Not a radius — everything else in this system is square. */
+  --cut:12px;
+}
+
+/* ---------- Brand system ----------
+   Documented at: FirstComms Brand System (Design System artifact).
+   The names below are the ones the brand book uses; the originals above are
+   kept because the whole stylesheet references them, so these are aliases
+   rather than a second palette. Add new colour through a named token with a
+   measured contrast ratio — after the last revision no colour literal appears
+   anywhere outside this block, and it should stay that way. */
+:root{
+  --surface-page:var(--cream-200);
+  --surface-raised:var(--cream-50);
+  --surface-sunken:var(--cream-100);
+  --ink:var(--brown-900);
+  --ink-body:var(--brown-700);
+  --ink-muted:var(--brown-600);
+  --ink-faint:var(--brown-400);
+  --line-soft:var(--cream-350);
+  --signal:var(--orange);
+  --action:var(--orange-btn);
+  --action-text:var(--orange-deep);
+  --signal-lift:var(--orange-lift);
+  --signal-wash:var(--orange-wash);
+  --font-mono:var(--mono);
+  --font-sans:var(--sans);
 }
 
 *,*::before,*::after{box-sizing:border-box}
